@@ -29,7 +29,7 @@ TreeNode* initNode(char* name, bool isFile, TreeNode* parent){
 }
 
 void addAtStart(TreeNode* newNode, TreeNode* parent){
-     if(parent->firstchild){
+    if(parent->firstchild){
         newNode->next = parent->firstchild->next;
         parent->firstchild->next = newNode;
     }
@@ -39,7 +39,7 @@ void addAtStart(TreeNode* newNode, TreeNode* parent){
 }
 
 void addNode(TreeNode* parent){
-    char name[50];
+    char name[NAME_SIZE];
     bool isFile;
     
     getInputData(name, &isFile);
