@@ -12,13 +12,13 @@
 
 #define ll long long int
 
-TreeNode* initNode(char* name, bool isFile, TreeNode* parent){
+TreeNode* init_node(char* name, bool is_file, TreeNode* parent){
 
     TreeNode* NewNode;
     NewNode =(TreeNode*)malloc(sizeof(TreeNode));
     assert(NewNode != NULL);
 
-    NewNode->isFile = isFile;
+    NewNode->is_file = is_file;
     NewNode->firstchild = NULL;
     NewNode->next = NULL;
     NewNode->current = NewNode;
@@ -28,7 +28,7 @@ TreeNode* initNode(char* name, bool isFile, TreeNode* parent){
     return NewNode;
 }
 
-void addAtStart(TreeNode* newNode, TreeNode* parent){
+void add_at_start(TreeNode* newNode, TreeNode* parent){
     if(parent->firstchild){
         newNode->next = parent->firstchild->next;
         parent->firstchild->next = newNode;
@@ -38,18 +38,18 @@ void addAtStart(TreeNode* newNode, TreeNode* parent){
     }
 }
 
-void addNode(TreeNode* parent){
+void add_node(TreeNode* parent){
     char name[NAME_SIZE];
-    bool isFile;
+    bool is_file;
     
-    getInputData(name, &isFile);
-    TreeNode* newNode = initNode(name, isFile, parent);
-    /*useless*/addAtStart(newNode, parent);
+    get_input_data(name, &is_file);
+    TreeNode* newNode = init_node(name, is_file, parent);
+    /*useless*/add_at_start(newNode, parent);
 }
 
-void getInputData(char* name, bool* isFile){
+void get_input_data(char* name, bool* is_file){
     scanf("%s", name);
-    scanf("%d", isFile);
+    scanf("%d", is_file);
 }
 
 
