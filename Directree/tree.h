@@ -23,22 +23,34 @@ returns pointer to the created node
 */
 TreeNode* initNode(char* name, bool isFile, TreeNode* parent);
 
-// takes input, calls initnode, adds node to correct location
+/*
+Part of the ADD function
+Takes argument pointer to parent node
+
+Reads user input, calls initnode, adds node as a child to the parent node
+*/
 void addNode(TreeNode*parent);
 
-// takes a character aray and returns pointer to the treenode at the location
-TreeNode* move(char* location);
+// takes a character aray and returns pointer to the treenode at the destination
+TreeNode* move(char* destination);
 
 void getInputDirectory();
 
 // traverse tree, add node
 TreeNode* traverseTree();
 
-// takes input: name, isfile, reads and copies inputs
+/*
+Takes args: char array, isfile
+reads and copies inputs to the args
+*/
 void getInputData(char* name, bool* isFile);
 
-// adds at beginning of sibling linked list (useless in array implementation)
-void addAtStart(TreeNode* newNode, TreeNode* Parent);
+/*
+Takes args: Node to be added and parent node
+adds the node at beginning of child linked list
+(useless in array implementation)
+*/
+void addAtStart(TreeNode* newNode, TreeNode* parent);
 
 #endif
 
