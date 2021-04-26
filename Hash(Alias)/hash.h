@@ -16,3 +16,17 @@ struct stHT_alias *createhash(int size);
 int hornercalc_modiiit(char arr[20], int size);
 
 //////////////////////////////////////////////////////////////////////////////////////
+
+struct stHT_alias
+{
+    long long iTableSize;
+    struct alias *start;
+};
+
+struct alias
+{
+    char path[50];
+    char ali[20];
+};
+
+#endif
