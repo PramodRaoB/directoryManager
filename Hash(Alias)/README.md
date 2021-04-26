@@ -1,1 +1,2 @@
-
+Todo:
+  -Implement Rehash function
