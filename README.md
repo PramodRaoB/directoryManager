@@ -16,7 +16,7 @@ Repo for the DSA Mini-project Directory Manager
 
 ### Optional
 
-- [ ] Implement vectors in c
+- [ ] Implement vectors in c (using function pointers if possible)
 - [ ] Use Miller-Rabin for prime finding for faster (but probabilistic) computation
 
 ---
