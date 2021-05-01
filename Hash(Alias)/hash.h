@@ -1,32 +1,32 @@
 #ifndef _HASHTABLE_H_
 
-#define _HASHTABLE_H
+#define _HASHTABLE_H_
 
 typedef long long Element;
 typedef long long Key;
-typedef struct stHT_alias *Alias;
-
+typedef struct stHT_alias *AliasTableStruct;
+typedef struct alias Alias;
 #define _invalid -5555;
 
+/*Stores Hashtable size and alias pointer "start"*/
+struct stHT_alias {
+	long long table_size;
+	struct alias *start;
+};
 
-//mini proj
+/*Alias struct contains a string that stores the absolute path and the Alias, another string*/
+struct alias {
+	char path[50];
+	char ali[20];
+};
 
-void Insert_path_qp(char arr1[50], char arr2[20], struct alias qp[], long long size);
+void InsertPathQP(char arr1[50], char arr2[20], struct alias qp[], long long size);
+
 struct stHT_alias *createhash(int size);
-int hornercalc_modiiit(char arr[20], int size);
+
+int HornerHash(char arr[20], int size);
 
 //////////////////////////////////////////////////////////////////////////////////////
 
-struct stHT_alias
-{
-    long long iTableSize;
-    struct alias *start;
-};
-
-struct alias
-{
-    char path[50];
-    char ali[20];
-};
 
 #endif
