@@ -3,10 +3,10 @@
 #include <math.h>
 #include <limits.h>
 #include <string.h>
-#include "/Users/vars/OneDrive - International Institute of Information Technology/dsa/directoryManager/Hash(Alias)/hash.h"
+#include "hash.h"
 
-
-struct stHT_alias *createhash(int size) {
+/*Create Hash Table Struct*/
+AliasTableStruct createhash(int size) {
     AliasTableStruct table;
 
     table = (AliasTableStruct)malloc(sizeof(struct stHT_alias));
