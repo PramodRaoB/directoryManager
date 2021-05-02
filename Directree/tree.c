@@ -13,7 +13,7 @@
 #define ll long long int
 
 TreeNode* init_node(char* name, bool is_file, TreeNode* parent){
-    int name_length = strlen(name);
+    int name_length = strlen(name)+1;
 
     // Mallocs
     TreeNode* new_node;
@@ -36,16 +36,6 @@ TreeNode* init_node(char* name, bool is_file, TreeNode* parent){
     return new_node;
 }
 
-void add_at_start(TreeNode* newNode, TreeNode* parent){
-    if(parent->first_child){
-        newNode->next = parent->first_child->next;
-        parent->first_child->next = newNode;
-    }
-    else{
-        parent->first_child = newNode;
-    }
-}
-
 void add_node(TreeNode* parent){
     char name[NAME_SIZE];
     bool is_file;
@@ -57,10 +47,41 @@ void add_node(TreeNode* parent){
     /*useless*/add_at_start(new_node, parent);
 }
 
+void add_at_start(TreeNode* newNode, TreeNode* parent){
+    if(parent->first_child){
+        newNode->next = parent->first_child->next;
+        parent->first_child->next = newNode;
+    }
+    else{
+        parent->first_child = newNode;
+    }
+}
+
 void get_input_data(char* name, bool* is_file){
     scanf("%s", name);
     scanf("%d", &is_file);
 }
+
+void print_contents(TreeNode* current){
+    TreeNode* temp = current->first_child;
+    int count = 0;
+
+    while(temp){
+        count++;
+        // printf("%d. ", count);
+        // count++;
+        if(temp->file->is_file){
+            printf("File:\t");
+        }
+        else
+            printf("Folder:\t");
+
+        printf("%s\n",temp->file->name);
+        temp = temp->next;
+    }
+    printf("%d item(s) in directory %s\n\n", count, current->file->name);
+}
+
 
 void delete_tree(TreeNode* root){
     // End of children list
@@ -80,9 +101,9 @@ void delete_tree(TreeNode* root){
 
     // The root is either a file or an empty directory
     free(root->file->name);
+    free(root->file);
     free(root);
     root = NULL;
     return;
-
 }
 
