@@ -4,7 +4,16 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-#include "NodeElement.h"
+typedef struct treenode TreeNode;
+
+struct treenode {
+  char name[NAME_SIZE];
+  bool is_file;
+  TreeNode *firstchild;
+  TreeNode *next;
+  TreeNode *current;
+  TreeNode *parent;
+};
 
 /*
 Inputs: File name, isFIle, address of the parent node
