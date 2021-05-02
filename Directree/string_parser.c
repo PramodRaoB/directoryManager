@@ -131,6 +131,9 @@ char **String_Parser(char *path)
     return words;
 }
 
+// Checks if a path follows the structure or not
+// Invalid paths are dealt with
+
 int is_Correct_Path(char *path, char **words)
 {
     int len = strlen(path);
@@ -158,6 +161,8 @@ int is_Correct_Path(char *path, char **words)
     }
     return flag;
 }
+
+// Prints the the length of the name of each directory/file in a given path
 
 void print_len_directories(char *path, char **words)
 {
