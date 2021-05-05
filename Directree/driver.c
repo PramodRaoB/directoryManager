@@ -1,5 +1,8 @@
+#include "NodeElement.h"
+#include "hashChild.h"
 #include "tree.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
 Takes args: char array, isfile
@@ -45,12 +48,48 @@ int main() {
   add_node(current, "hi", 0);
   print_contents(current);
 
+  TreeNode *temp = findInTable(current->ht, "hello");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
+  temp = findInTable(current->ht, "h");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
+
   add_node(current, "how", 0);
+  temp = findInTable(current->ht, "how");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
+  temp = findInTable(current->ht, "howw");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
   print_contents(current);
 
   current = current->first_child;
 
   add_node(current, "second layer", 0);
+  temp = findInTable(current->ht, "hi");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
+  temp = findInTable(current->ht, "second layr");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
+  temp = findInTable(current->ht, "second layer");
+  if (temp)
+    printf("found\n");
+  else
+    printf("no\n");
   print_contents(current);
 
   delete_tree(root);
