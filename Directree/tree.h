@@ -21,8 +21,6 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent);
 Takes argument pointer to parent node
 (Must be a directory. The file gets inserted here)
 Takes new node name and is_file as arguments
-
-Reads user input, calls initnode, adds node as a child to the parent node
 */
 void add_node(TreeNode *parent, char *name, bool is_file);
 
