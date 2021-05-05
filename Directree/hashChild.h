@@ -3,15 +3,7 @@
 
 #include "NodeElement.h"
 
-typedef TreeNode *ElementType;
-
-typedef struct hashTable {
-  int tableSize;
-  int filledSize;
-  ElementType *table;
-
-  // function pointers
-} HashTable;
+HashTable *initTable(int size);
 
 unsigned int getHash(char *str, int m);
 void rehashTable(HashTable *ht);

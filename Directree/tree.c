@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "hashChild.h"
 #include "tree.h"
 
 #define ll long long int
@@ -19,6 +20,7 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   assert(new_node->file != NULL);
   new_node->file->name = (char *)malloc(name_length * sizeof(char));
   assert(new_node->file->name != NULL);
+  new_node->ht = initTable(1009);
 
   // Assignments
   new_node->file->is_file = is_file;
@@ -35,6 +37,7 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
 void add_node(TreeNode *parent, char *name, bool is_file) {
   // Change for array implementation
   TreeNode *new_node = init_node(name, is_file, parent);
+  insertIntoTable(parent->ht, new_node);
   /*useless*/ add_at_start(new_node, parent);
 }
 
@@ -62,6 +65,8 @@ void delete_tree(TreeNode *root) {
   // The root is either a file or an empty directory
   free(root->file->name);
   free(root->file);
+  free(root->ht->table);
+  free(root->ht);
   free(root);
   root = NULL;
   return;

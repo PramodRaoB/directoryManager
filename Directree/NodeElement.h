@@ -7,6 +7,8 @@
 
 typedef struct treenode TreeNode;
 typedef struct filedetails FileDetails;
+typedef struct hashTable HashTable;
+typedef TreeNode *ElementType;
 
 struct treenode {
   FileDetails *file;
@@ -15,10 +17,20 @@ struct treenode {
   TreeNode *next;
   TreeNode *current;
   TreeNode *parent;
+
+  HashTable *ht;
 };
 
 struct filedetails {
   char *name;
   bool is_file;
+};
+
+struct hashTable {
+  int tableSize;
+  int filledSize;
+  ElementType *table;
+
+  // function pointers
 };
 #endif
