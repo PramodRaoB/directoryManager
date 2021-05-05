@@ -1,5 +1,22 @@
 # Changelog
 
+## 06 May 2021
+
+## by Pramod Rao B (@PramodRaoB) in branch `majorNodeRestructure` (merged)
+
+### Commits today (06/05/2021) : 4
+
+### Commits yesterday (05/05/2021) : 5
+
+- Redefined node element to account for hashtable integration
+- Moved node definitions to `NodeElement.h` file
+- Moved `string_parser.c` into utils
+- Moved input/output functions out from `tree.c`
+- Redefine `add_node` functions and other functions to integrate with hashtable
+- clean-up all files in folder `directree`
+
+---
+
 ## 02 May 2021
 
 ## by Pramod Rao B (@PramodRaoB) in branch `childHashTable` (merged)
