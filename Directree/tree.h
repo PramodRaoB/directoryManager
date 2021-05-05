@@ -34,18 +34,6 @@ adds the node at beginning of child linked list
 */
 void add_at_start(TreeNode *newNode, TreeNode *parent);
 
-/*
-Takes args: char array, isfile
-reads and copies inputs to the args
-*/
-void get_input_data(char *name, bool *is_file);
-
-/*
-Takes arg: pointer to current directory
-Prints all the contents present in the current directory
-*/
-void print_contents(TreeNode *current);
-
 // takes a character aray and returns pointer to the treenode at the destination
 TreeNode *move(char *destination);
 
