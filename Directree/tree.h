@@ -1,27 +1,11 @@
 #ifndef __TREE_H__
 #define __TREE_H__
-#define NAME_SIZE 64
 #include <stdbool.h>
 #include <stdio.h>
 
-typedef struct treenode TreeNode;
-typedef struct filedetails FileDetails;
+#include "NodeElement.h"
 
-struct treenode{
-    FileDetails* file;
-    TreeNode* first_child;
-  	TreeNode* next;
-  	TreeNode* current;
-  	TreeNode* parent;
-};
-
-struct filedetails{
-    char* name;
-    bool is_file;
-};
-
-
-/* 
+/*
 Inputs: File name, isFIle, address of the parent node
 mallocs and initialises all properties of the node
 returns pointer to the created node
@@ -36,10 +20,9 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent);
 
 Takes argument pointer to parent node
 (Must be a directory. The file gets inserted here)
-
-Reads user input, calls initnode, adds node as a child to the parent node
+Takes new node name and is_file as arguments
 */
-void add_node(TreeNode *parent);
+void add_node(TreeNode *parent, char *name, bool is_file);
 
 /*
 Takes args: Node to be added and parent node
@@ -47,29 +30,16 @@ adds the node at beginning of child linked list
 (called by add_node function)
 (useless in array implementation)
 */
-void add_at_start(TreeNode* newNode, TreeNode* parent);
-
-/*
-Takes args: char array, isfile
-reads and copies inputs to the args
-*/
-void get_input_data(char *name, bool *is_file);
-
-/*
-Takes arg: pointer to current directory
-Prints all the contents present in the current directory
-*/
-void print_contents(TreeNode* current);
+void add_at_start(TreeNode *newNode, TreeNode *parent);
 
 // takes a character aray and returns pointer to the treenode at the destination
-TreeNode* move(char* destination);
+TreeNode *move(char *destination);
 
 void get_input_directory();
 
 // traverse tree, add node
-TreeNode* traverse_tree();
+TreeNode *traverse_tree();
 
-
-void delete_tree(TreeNode* root);
+void delete_tree(TreeNode *root);
 
 #endif
