@@ -2,29 +2,35 @@
 
 #define _HASHTABLE_H_
 
-typedef long long Element;
-typedef long long Key;
 typedef struct stHT_alias *AliasTableStruct;
 typedef struct alias Alias;
-#define _invalid -5555;
+typedef unsigned long long llu;
 
 /*Stores Hashtable size and alias pointer "start"*/
-struct stHT_alias {
-	long long table_size;
+struct stHT_alias
+{
+	llu table_size;
+	llu num_elems;
 	struct alias *start;
 };
 
 /*Alias struct contains a string that stores the absolute path and the Alias, another string*/
-struct alias {
+struct alias
+{
 	char path[50];
 	char ali[20];
 };
 
-void InsertPathQP(char arr1[50], char arr2[20], struct alias qp[], long long size);
+/*Takes the path and the alias and puts them into a hashtable*/
+AliasTableStruct InsertPathQP(char arr1[50], char arr2[20], AliasTableStruct table);
 
-struct stHT_alias *createhash(int size);
+/*Creates hashtable*/
+AliasTableStruct CreateHash(llu size);
 
-int HornerHash(char arr[20], int size);
+/*Rehashes the table when it reaches 50% of its max capacity*/
+AliasTableStruct Rehash(AliasTableStruct Old);
 
+/*Returns key*/
+llu HornerHash(char arr[20], llu size);
 
 #endif
