@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <string.h>
 #include "hash.h"
-#include "utils/utils.h"
+#include "../utils/utils.h"
 
 
 /*Create Hash Table Struct*/
