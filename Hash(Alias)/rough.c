@@ -3,8 +3,76 @@
 #include <math.h>
 #include <limits.h>
 #include <string.h>
-#include "hash.h"
-#include "utils/utils.h"
+#include <stdbool.h>
+typedef unsigned long long llu;
+/*Stores Hashtable size and alias pointer "start"*/
+struct stHT_alias
+{
+	llu table_size;
+	llu num_elems;
+	struct alias *start;
+};
+
+/*Alias struct contains a string that stores the absolute path and the Alias, another string*/
+struct alias
+{
+	char path[50];
+	char ali[20];
+};
+
+typedef struct stHT_alias *AliasTableStruct;
+typedef struct alias Alias;
+typedef unsigned long long llu;
+
+
+bool __isPrime(llu input) {
+  llu x = 4;
+  for (llu i = 5; true ; i += x) {
+    if (input % i == 0)
+      return false;
+    llu q = input / i;
+    if (q < i)
+      return true;
+    x ^= 6;
+  }
+  return true;
+}
+
+llu nextPrime(llu input) {
+  if (input < 0) return -1;
+
+  switch (input) {
+   case 0:
+   case 1:
+   case 2:
+     return 2;
+   case 3:
+     return 3;
+   case 4:
+   case 5:
+     return 5;
+  }
+
+  llu i = input % 6;
+  llu x = i < 2 ? 1 : 5;
+  input = 6 * (input / 6) + x;
+  for (i = (3 + x) / 2; !__isPrime(input); input += i) 
+    i ^= 6;
+
+  return input;
+}
+
+/*Takes the path and the alias and puts them into a hashtable*/
+AliasTableStruct InsertPathQP(char arr1[50], char arr2[20], AliasTableStruct table);
+
+/*Creates hashtable*/
+AliasTableStruct CreateHash(llu size);
+
+/*Rehashes the table when it reaches 50% of its max capacity*/
+AliasTableStruct Rehash(AliasTableStruct Old);
+
+/*Returns key*/
+llu HornerHash(char arr[20], llu size);
 
 
 /*Create Hash Table Struct*/
@@ -120,4 +188,24 @@ AliasTableStruct Rehash(AliasTableStruct Old)
     }
 
     return New;
+}
+
+
+int main()
+{
+    AliasTableStruct table;
+    table = CreateHash(4);
+    int t;
+    printf("Enter number of tcs: \n");
+    scanf("%d", &t);
+    while (t--)
+    {
+        char arr1[50];
+        char arr2[20];
+        printf("Enter the path and the alias: \n");
+        scanf("%s %s", arr1, arr2);
+        table = InsertPathQP (arr1, arr2, table);
+        int hash = HornerHash(arr2,table->table_size);
+        printf("%s\n%s\n%lld\n%lld\n", table->start[hash].path, table->start[hash].ali,table->num_elems,table->table_size);
+    }
 }
