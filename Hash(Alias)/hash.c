@@ -81,14 +81,14 @@ AliasTableStruct InsertPathQP(char curr_path[50], char curr_alias[20], AliasTabl
                 }
             }
         }
-        temp = (hash + val * val) % size;
+        hash = (temp + val * val) % size;
         val++;
     }
 
     strcpy(qp[hash].path, curr_path);
     strcpy(qp[hash].ali, curr_alias);
     table->num_elems++;
-    if(table->num_elems > size/2)
+    if(table->num_elems >= size/2)
     {
         table = Rehash(table);
     }
