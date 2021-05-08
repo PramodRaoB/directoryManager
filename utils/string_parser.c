@@ -62,8 +62,7 @@ int *parser_func(char *path)
     int *indices;
     int upd = 1;
     indices = (int *)malloc(upd * sizeof(int));
-    int len = strlen(path);
-    len--;
+    int len = strlen(path) - 1;
     int size = 0;
     for (int i = 0; i < len; i++)
     {
@@ -85,23 +84,14 @@ int *parser_func(char *path)
 // The only parameter for this function is a 1D array which represents the path
 int len_of_parser_func(char *path)
 {
-    int *indices;
-    indices = (int *)malloc(sizeof(int));
-    int upd = 1;
-    int len = strlen(path);
-    len--;
+    int len = strlen(path) - 1;
     int size = 0;
     for (int i = 0; i < len; i++)
     {
         // ASCII Value of / is 47
         if ((int)path[i] == 47)
         {
-            indices[size++] = i;
-            if (size == upd)
-            {
-                upd *= 2;
-                indices = (int *)realloc(indices, upd * sizeof(int));
-            }
+            size++;
         }
     }
     return size;
@@ -113,8 +103,7 @@ char **String_Parser(char *path)
 {
     char **words;
     int realloc_fac = 1;
-    int len = strlen(path);
-    len--;
+    int len = strlen(path) - 1;
     int no_of_words = len_of_parser_func(path) + 1;
     //printf("%d\n", no_of_words);
     int *indices;
@@ -147,20 +136,7 @@ char **String_Parser(char *path)
 // Takes a 1D array, path and a 2D array, words. The 2D array, words, has all the files/directory names stored in it
 int is_Correct_Path(char *path, char **words)
 {
-    int len = strlen(path);
-    len--;
-    int no_of_words = len_of_parser_func(path) + 1;
-    int *indices;
-    indices = parser_func(path);
-    int j = 0;
-    indices = (int *)realloc(indices, sizeof(int) * (no_of_words + 1));
-    for (int i = no_of_words - 2; i >= 0; i--)
-    {
-        indices[i + 1] = indices[i];
-    }
-    indices[0] = -1;
-    indices[no_of_words] = (len);
-    int cnt = 0;
+    int len = strlen(path) - 1;
     int flag = 0;
     for (int i = 0; i < no_of_words; i++)
     {
@@ -177,20 +153,7 @@ int is_Correct_Path(char *path, char **words)
 // Takes the 2D array words and the 1D array path as parameters
 void print_len_directories(char *path, char **words)
 {
-    int len = strlen(path);
-    len--;
-    int no_of_words = len_of_parser_func(path) + 1;
-    int *indices;
-    indices = parser_func(path);
-    int j = 0;
-    indices = (int *)realloc(indices, sizeof(int) * (no_of_words + 1));
-    for (int i = no_of_words - 2; i >= 0; i--)
-    {
-        indices[i + 1] = indices[i];
-    }
-    indices[0] = -1;
-    indices[no_of_words] = (len);
-    int cnt = 0;
+    int len = strlen(path) - 1;
     for (int i = 0; i < no_of_words; i++)
     {
         printf("%ld\n", strlen(words[i]));
