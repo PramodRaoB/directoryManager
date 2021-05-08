@@ -8,12 +8,12 @@ char *read_string(void)
 {
     char *arr;
     int len = 0;
-    int update = 1;
+    int update = 16;
+    char ch;
+    int size = 0;
 
     arr = (char *)malloc(update * sizeof(char));
-    char ch;
     // printf("Enter The Path: \n");
-    int size = 0;
     while (ch != '\n')
     {
         ch = getc(stdin);

@@ -4,18 +4,17 @@ void ADD(char *fileName, bool isFile, TreeNode *currentDir) {
   add_node(currentDir, fileName, isFile);
 }
 
-ElementType MOVE(ElementType root){
+TreeNode* MOVE(TreeNode* root){
   char *input_string;
-  ElementType current;
+  TreeNode* current;
 
   input_string = read_string();
 
   current = traversal(input_string, root);
 
-    /*error*/
-    /*Returning NULL if path found wrong*/
+  /*error*/
+  /*Returning NULL if path is wrong*/
   if(current == NULL){
-
     // no changes to the input root
     printf("INVALID PATH!\n\n");
     return root;
@@ -32,39 +31,40 @@ ElementType MOVE(ElementType root){
   return current;
 
 }
-/*
-  ALIAS function takes in the Alias table and root of the tree.
-  We scan for the path and the alias and check if the path is a correct path by using traversal function.
-  Insert the path and the alias in the Alias Hashtable.
-*/
-void ALIAS(AliasTableStruct table, ElementType root)
-{
-  char path[50];
-  char alias[20];
+
+void ALIAS(AliasTableStruct table, TreeNode *root){
+  char path[MAX_PATH_LENGTH];
+  char alias[MAX_ALIAS_LENGTH];
   scanf("%s %s",path,alias);
-  ElementType Node;
+  TreeNode *Node;
   Node= traversal(path,root);
+  
   if(Node!=NULL)
   {
     table= InsertPathQP(path,alias,table);
+    if(Node->file->is_file){
+      printf("Note: %s is a file\n", Node->file->name);
+    }
+    else{
+      printf("Note: %s is a directory\n", Node->file->name);
+    }
     return;
   }
   printf("Invalid Path");
 
 }
 
-ElementType TELEPORT(AliasTableStruct table, ElementType root)
-{
-  char alias[20];
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root){
+  char alias[MAX_ALIAS_LENGTH];
   scanf("%s",alias);
   char *path=FindAlias(alias,table);
   
-  ElementType current;
+  TreeNode *current;
 
   current = traversal(path, root);
 
-    /*error*/
-    /*Returning NULL if path found wrong*/
+  /*error*/
+  /*Returning NULL if path found wrong*/
   if(current == NULL){
 
     // no changes to the input root
@@ -74,10 +74,10 @@ ElementType TELEPORT(AliasTableStruct table, ElementType root)
 
   /*The given path leads to a file*/
   if(current->file->is_file){
-    // no changes to the input root
-    printf("GIVEN PATH LEADS TO A FILE\n");
-    printf("COULD NOT MOVE TO THE LOCATION\n\n");
-    return root;
+    printf("Alias retrieved to file: %s\n", current->file->name);
+  }
+  else{
+    printf("Alias retrieved to directory: %s\n", current->file->name);
   }
 
   return current;

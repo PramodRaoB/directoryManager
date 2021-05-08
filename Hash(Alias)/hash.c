@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <limits.h>
-#include <string.h>
 #include "hash.h"
-#include "../utils/utils.h"
 
 
 /*Create Hash Table Struct*/
@@ -26,7 +20,7 @@ AliasTableStruct CreateHash(llu size)
 }
 
 /*Returns hash value for strings*/
-llu HornerHash(char arr[20], llu size)
+llu HornerHash(char arr[MAX_ALIAS_LENGTH], llu size)
 {
     llu hash = 0;
     llu len = strlen(arr);
@@ -40,7 +34,7 @@ llu HornerHash(char arr[20], llu size)
 }
 
 /*Insert Path lluo quadratic probing table, qp = quadratic probing*/
-AliasTableStruct InsertPathQP(char curr_path[50], char curr_alias[20], AliasTableStruct table)
+AliasTableStruct InsertPathQP(char curr_path[MAX_PATH_LENGTH], char curr_alias[MAX_ALIAS_LENGTH], AliasTableStruct table)
 {
     Alias *qp= table->start;
     llu size= table->table_size;
@@ -69,7 +63,7 @@ AliasTableStruct InsertPathQP(char curr_path[50], char curr_alias[20], AliasTabl
                 scanf("%c%c", &buff2, &d);
                 if (d == 'Y')
                 {
-                    char dummy[20];
+                    char dummy[MAX_ALIAS_LENGTH];
                     printf("Enter new alias.\n");
                     scanf("%s", dummy);
                     InsertPathQP(curr_path, dummy, table);

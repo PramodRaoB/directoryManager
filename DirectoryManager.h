@@ -9,11 +9,22 @@
  * */
 void ADD(char *fileName, bool isFile, TreeNode *currentDir);
 
-ElementType MOVE(ElementType root);
+/*
+ * MOVE function takes in the pointer to the directory from which the path is given
+ * It scans for a path input
+ * returns pointer to the end of path if valid
+ * Else returns root
+ * */
+TreeNode *MOVE(TreeNode *root);
 
-void ALIAS(AliasTableStruct table, ElementType root);
+/*
+ * ALIAS function takes in the Alias table and root of the tree.
+ * We scan for the path and the alias and check if the path is a correct path by using traversal function.
+ * Insert the path and the alias in the Alias Hashtable.
+ * */
+void ALIAS(AliasTableStruct table, TreeNode *root);
 
-ElementType TELEPORT(AliasTableStruct table, ElementType root);
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root);
 
 void FIND();
 

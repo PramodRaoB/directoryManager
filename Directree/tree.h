@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 #include "NodeElement.h"
 
 /*
@@ -22,34 +21,36 @@
 TreeNode *init_node(char *name, bool is_file, TreeNode *parent);
 
 /*
-**Call this function to add anything to the tree**
-**Part of the ADD function**
+ * **Call this function to add anything to the tree**
+ * **Part of the ADD function**
 
-Takes argument pointer to parent node
-(Must be a directory. The file gets inserted here)
-Takes new node name and is_file as arguments
+ * Takes argument pointer to parent node
+ * (Must be a directory. The file gets inserted here)
+ * Takes new node name and is_file as arguments
 */
 void add_node(TreeNode *parent, char *name, bool is_file);
 
 /*
-Takes args: Node to be added and parent node
-adds the node at beginning of child linked list
-(called by add_node function)
-(useless in array implementation)
-*/
+ * Takes args: Node to be added and parent node
+ * adds the node at beginning of child linked list
+ * (called by add_node function)
+ * */
 void add_at_start(TreeNode *newNode, TreeNode *parent);
 
-
-void delete_tree(TreeNode *root);
-
 //Given the absolute path of a file/dir, the function returns the pointer to that file/dir
-ElementType traversal(char *path, ElementType root);
+TreeNode *traversal(char *path, TreeNode *root);
 
 /*
  * Takes arg: pointer to current directory
  * 8 Prints all the contents present in the current directory
  * Returns number of files in the directory
  * */
-int print_contents(ElementType current);
+int print_contents(TreeNode *current);
+
+/*
+ * Takes in pointer to the root node and deletes the whole tree after
+ * */
+void delete_tree(TreeNode *root);
+
 
 #endif

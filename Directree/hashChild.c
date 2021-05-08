@@ -5,11 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
- * Returns an "initialized" hashtable
- * Allocates memory for the hashtable container and the actual table
- * then sets all the table entries to NULL
- */
 
 HashTable *initTable(int size)
 {
@@ -29,10 +24,6 @@ HashTable *initTable(int size)
   return ht;
 }
 
-/*
- * Returns the hash value of a given string
- * Uses the djb2 hash function
- * */
 unsigned int getHash(char *str, int m)
 {
   unsigned long hash = 5381;
@@ -47,11 +38,6 @@ unsigned int getHash(char *str, int m)
   return hash;
 }
 
-/*
- * Increases the capacity of hashtable to the smallest prime number greater than
- * twice the current capacity
- * Allocates memory and then inserts elements from old table into new
- * */
 void rehashTable(HashTable *ht)
 {
   int newSize = nextPrime(ht->tableSize * 2 + 1);
@@ -78,11 +64,6 @@ void rehashTable(HashTable *ht)
   free(oldTable);
 }
 
-/*
- * Inserts given node pointer into hashtable
- * if load factor of table is >= 0.5, rehashes the table
- * Uses quadratic probing for insertion
- * */
 
 void insertIntoTable(HashTable *ht, ElementType x)
 {
@@ -102,10 +83,6 @@ void insertIntoTable(HashTable *ht, ElementType x)
   ht->table[(newHash + offset) % ht->tableSize] = x;
 }
 
-/*
- * Given a string, returns pointer to node if it exists in the hashtable
- * returns NULL if not found
- * */
 ElementType findInTable(HashTable *ht, char *nodeName)
 {
   unsigned int searchHash = getHash(nodeName, ht->tableSize);

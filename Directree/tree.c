@@ -4,8 +4,7 @@
 
 #define ll long long int
 
-TreeNode *init_node(char *name, bool is_file, TreeNode *parent)
-{
+TreeNode *init_node(char *name, bool is_file, TreeNode *parent){
   int name_length = strlen(name) + 1;
 
   // Mallocs
@@ -34,21 +33,67 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent)
   return new_node;
 }
 
-void add_node(TreeNode *parent, char *name, bool is_file)
-{
+void add_node(TreeNode *parent, char *name, bool is_file){
   TreeNode *new_node = init_node(name, is_file, parent);
   insertIntoTable(parent->ht, new_node);
   add_at_start(new_node, parent);
 }
 
-void add_at_start(TreeNode *newNode, TreeNode *parent)
-{
+void add_at_start(TreeNode *newNode, TreeNode *parent){
   newNode->next = parent->first_child;
   parent->first_child = newNode;
 }
 
-void delete_tree(TreeNode *root)
+TreeNode *traversal(char *path, TreeNode *root)
 {
+  char **finalarray;
+  finalarray = String_Parser(path);
+  TreeNode *temp = NULL;
+  int length = len_of_parser_func(path) + 1;
+  if (is_Correct_Path(path, finalarray))
+  {
+    return NULL;
+  }
+  
+  if (strcmp(finalarray[0], root->file->name) == 0)
+  {
+    temp = root;
+    for (int i = 1; i < length; i++)
+    {
+      temp = findInTable(temp->ht, finalarray[i]);
+      if (temp == NULL)
+      {
+        return NULL;
+      }
+    }
+  }
+  else{
+    printf("INCORRECT root ARGUMENT");
+  }
+  return temp;
+}
+
+int print_contents(TreeNode *current){
+  TreeNode *temp = current->first_child;
+  int count = 0;
+
+  while (temp) {
+    count++;
+    // printf("%d. ", count);
+    // count++;
+    if (temp->file->is_file) {
+      printf("File:\t");
+    } else
+      printf("Folder:\t");
+
+    printf("%s\n", temp->file->name);
+    temp = temp->next;
+  }
+  printf("%d item(s) in directory %s\n\n", count, current->file->name);
+  return count;
+}
+
+void delete_tree(TreeNode *root){
   // End of children list
   if (root == NULL)
   {
@@ -74,49 +119,4 @@ void delete_tree(TreeNode *root)
   free(root);
   root = NULL;
   return;
-}
-
-ElementType traversal(char *path, ElementType root)
-{
-  char **finalarray;
-  finalarray = String_Parser(path);
-  ElementType temp;
-  int length = len_of_parser_func(path) + 1;
-  if (is_Correct_Path(path, finalarray))
-  {
-    return NULL;
-  }
-  if (strcmp(finalarray[0], root->file->name) == 0)
-  {
-    temp = root;
-    for (int i = 1; i < length; i++)
-    {
-      temp = findInTable(temp->ht, finalarray[i]);
-      if (temp == NULL)
-      {
-        return NULL;
-      }
-    }
-  }
-  return temp;
-}
-
-int print_contents(TreeNode *current){
-  TreeNode *temp = current->first_child;
-  int count = 0;
-
-  while (temp) {
-    count++;
-    // printf("%d. ", count);
-    // count++;
-    if (temp->file->is_file) {
-      printf("File:\t");
-    } else
-      printf("Folder:\t");
-
-    printf("%s\n", temp->file->name);
-    temp = temp->next;
-  }
-  printf("%d item(s) in directory %s\n\n", count, current->file->name);
-  return count;
 }

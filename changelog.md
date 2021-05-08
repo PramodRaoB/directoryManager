@@ -4,12 +4,20 @@
 
 ## by Tejah S S (@BuzzingTaz) in branch main
 
+### Commits today: 2
+
+- Added macros in `Hash(Alias)/hash.h` named MAX_ALIAS_LENGTH and MAX_PATH_LENGTH to generalize.
+- Increased `NAME_SIZE` to 100 from 64 (is only used to take input while adding).
+- Fixed Teleport function not returning file aliases.(Find function is missing).
+- Alias function now tells if the aliased location is a file or directory.
+- Restructured and added more comments. Moved some from .c to their respective .h files.
+
 ### Commits today: 1
 
 - Added `string_parser.h` file.
 - Removed `get_input_string()` from tree.h since it is implemented already.
 
-## in branch `MoveFunction`
+## in branch `MoveFunction` (merged)
 
 ### Commits today: 1
 

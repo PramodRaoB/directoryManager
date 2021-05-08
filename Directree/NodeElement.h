@@ -1,7 +1,7 @@
 #ifndef NODE_ELEMENT_H
 #define NODE_ELEMENT_H
 
-#define NAME_SIZE 64
+#define NAME_SIZE 100
 
 #include <stdbool.h>
 
