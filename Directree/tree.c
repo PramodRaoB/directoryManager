@@ -6,10 +6,12 @@
 
 #include "hashChild.h"
 #include "tree.h"
+#include "../utils/string_parser.h"
 
 #define ll long long int
 
-TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
+TreeNode *init_node(char *name, bool is_file, TreeNode *parent)
+{
   int name_length = strlen(name) + 1;
 
   // Mallocs
@@ -34,21 +36,25 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   return new_node;
 }
 
-void add_node(TreeNode *parent, char *name, bool is_file) {
+void add_node(TreeNode *parent, char *name, bool is_file)
+{
   // Change for array implementation
   TreeNode *new_node = init_node(name, is_file, parent);
   insertIntoTable(parent->ht, new_node);
   /*useless*/ add_at_start(new_node, parent);
 }
 
-void add_at_start(TreeNode *newNode, TreeNode *parent) {
+void add_at_start(TreeNode *newNode, TreeNode *parent)
+{
   newNode->next = parent->first_child;
   parent->first_child = newNode;
 }
 
-void delete_tree(TreeNode *root) {
+void delete_tree(TreeNode *root)
+{
   // End of children list
-  if (root == NULL) {
+  if (root == NULL)
+  {
     return;
   }
 
@@ -56,7 +62,8 @@ void delete_tree(TreeNode *root) {
   TreeNode *temp_next;
 
   // Iterates through each child and deletes subdirectories recursively
-  while (temp) {
+  while (temp)
+  {
     temp_next = temp->next;
     delete_tree(temp);
     temp = temp_next;
@@ -70,4 +77,33 @@ void delete_tree(TreeNode *root) {
   free(root);
   root = NULL;
   return;
+}
+
+ElementType traversal(char *path, ElementType root)
+{
+  char **finalarray;
+  finalarray = String_Parser(path);
+  ElementType temp;
+  int length = len_of_parser_func(path) + 1;
+  if (is_Correct_Path(path, finalarray))
+  {
+    printf("INVALID PATH!\n");
+    return NULL;
+  }
+  if (strcmp(finalarray[0], root->file->name) == 0)
+  {
+    temp = root;
+    for (int i = 1; i < length; i++)
+    {
+      temp = findInTable(temp->ht, finalarray[i]);
+      if (temp == NULL)
+      {
+        /*error*/
+        /*Returning NULL if path found wrong*/
+        printf("INVALID PATH!\n");
+        return NULL;
+      }
+    }
+  }
+  return temp;
 }
