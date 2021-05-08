@@ -4,7 +4,6 @@
 // Memory optimisation while reading a character string
 // Uses vector based implememntation
 // reallocates memory to 2*size everytime it gets full.
-
 char *read_string(void)
 {
     char *arr;
@@ -13,7 +12,7 @@ char *read_string(void)
 
     arr = (char *)malloc(update * sizeof(char));
     char ch;
-    printf("Enter The Path: \n");
+    // printf("Enter The Path: \n");
     int size = 0;
     while (ch != '\n')
     {
@@ -35,7 +34,6 @@ char *read_string(void)
 }
 
 // prints a char string given a char array as a parameter
-
 void print_string(char *arr)
 {
     int len = strlen(arr);
@@ -48,7 +46,6 @@ void print_string(char *arr)
 }
 
 // prints an integer array given an integer array and its length as parameters
-
 void print_arr(int *arr, int n)
 {
     for (int i = 0; i < n; i++)
@@ -60,7 +57,6 @@ void print_arr(int *arr, int n)
 
 // gives the indices of the '/' position in the path
 // The only parameter for this function is a 1D array which represents the path
-
 int *parser_func(char *path)
 {
     int *indices;
@@ -87,7 +83,6 @@ int *parser_func(char *path)
 
 // gives the number of '/'s in a string
 // The only parameter for this function is a 1D array which represents the path
-
 int len_of_parser_func(char *path)
 {
     int *indices;
@@ -114,7 +109,6 @@ int len_of_parser_func(char *path)
 
 // Parses the string taking / as a delimiter and stores all the directory names
 // The only parameter for this function is a 1D array which represents the path
-
 char **String_Parser(char *path)
 {
     char **words;
@@ -151,7 +145,6 @@ char **String_Parser(char *path)
 // Checks if a path follows the structure or not
 // Invalid paths are dealt with
 // Takes a 1D array, path and a 2D array, words. The 2D array, words, has all the files/directory names stored in it
-
 int is_Correct_Path(char *path, char **words)
 {
     int len = strlen(path);
@@ -182,7 +175,6 @@ int is_Correct_Path(char *path, char **words)
 
 // Prints the the length of the name of each directory/file in a given path
 // Takes the 2D array words and the 1D array path as parameters
-
 void print_len_directories(char *path, char **words)
 {
     int len = strlen(path);
@@ -207,7 +199,6 @@ void print_len_directories(char *path, char **words)
 
 // prints all the directory names represented by a path
 // Takes the 2D array words, and the 1D array path as parameters
-
 void print_words(char **words, char *path)
 {
     int len = len_of_parser_func(path) + 1;

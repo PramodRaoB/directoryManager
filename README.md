@@ -9,10 +9,15 @@ Repo for the DSA Mini-project Directory Manager
 - [x] Create founding tree structure
 - [x] Create hashtable for aliasing
 - [x] Implement prime finding algorithm to find next greatest prime
-- [ ] Array-based implementation for node children
-- [ ] Use hashing for O(1) finding of children
-- [ ] Implement hashing based traversal
+- [X] Array-based implementation for node children
+- [X] Use hashing for O(1) finding of children
+- [X] Implement hashing based traversal
 - [ ] Better find function (possibly trie based)
+
+### Styling
+
+- [ ] Move comments to header files and follow a common standard
+- [ ] Move standard library header file includes to .h files instead of .c
 
 ### Optional
 

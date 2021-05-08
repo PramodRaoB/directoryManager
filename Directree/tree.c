@@ -1,9 +1,3 @@
-#include <assert.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "hashChild.h"
 #include "tree.h"
 #include "../utils/string_parser.h"
@@ -42,10 +36,9 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent)
 
 void add_node(TreeNode *parent, char *name, bool is_file)
 {
-  // Change for array implementation
   TreeNode *new_node = init_node(name, is_file, parent);
   insertIntoTable(parent->ht, new_node);
-  /*useless*/ add_at_start(new_node, parent);
+  add_at_start(new_node, parent);
 }
 
 void add_at_start(TreeNode *newNode, TreeNode *parent)
@@ -102,12 +95,29 @@ ElementType traversal(char *path, ElementType root)
       temp = findInTable(temp->ht, finalarray[i]);
       if (temp == NULL)
       {
-        /*error*/
-        /*Returning NULL if path found wrong*/
-        printf("INVALID PATH!\n");
         return NULL;
       }
     }
   }
   return temp;
+}
+
+int print_contents(TreeNode *current){
+  TreeNode *temp = current->first_child;
+  int count = 0;
+
+  while (temp) {
+    count++;
+    // printf("%d. ", count);
+    // count++;
+    if (temp->file->is_file) {
+      printf("File:\t");
+    } else
+      printf("Folder:\t");
+
+    printf("%s\n", temp->file->name);
+    temp = temp->next;
+  }
+  printf("%d item(s) in directory %s\n\n", count, current->file->name);
+  return count;
 }
