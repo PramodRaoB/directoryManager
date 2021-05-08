@@ -11,4 +11,12 @@ void ADD(char *fileName, bool isFile, TreeNode *currentDir);
 
 ElementType MOVE(ElementType root);
 
+void ALIAS(AliasTableStruct table, ElementType root);
+
+ElementType TELEPORT(AliasTableStruct table, ElementType root);
+
+void FIND();
+
+void QUIT();
+
 #endif
