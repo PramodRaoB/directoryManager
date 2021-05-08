@@ -20,7 +20,11 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   assert(new_node->file != NULL);
   new_node->file->name = (char *)malloc(name_length * sizeof(char));
   assert(new_node->file->name != NULL);
-  new_node->ht = initTable(1009);
+
+  if (!is_file)
+    new_node->ht = initTable(1009);
+  else
+    new_node->ht = NULL;
 
   // Assignments
   new_node->file->is_file = is_file;
