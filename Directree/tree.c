@@ -1,15 +1,11 @@
-#include <assert.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "hashChild.h"
 #include "tree.h"
+#include "../utils/string_parser.h"
 
 #define ll long long int
 
-TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
+TreeNode *init_node(char *name, bool is_file, TreeNode *parent)
+{
   int name_length = strlen(name) + 1;
 
   // Mallocs
@@ -38,21 +34,24 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   return new_node;
 }
 
-void add_node(TreeNode *parent, char *name, bool is_file) {
-  // Change for array implementation
+void add_node(TreeNode *parent, char *name, bool is_file)
+{
   TreeNode *new_node = init_node(name, is_file, parent);
   insertIntoTable(parent->ht, new_node);
-  /*useless*/ add_at_start(new_node, parent);
+  add_at_start(new_node, parent);
 }
 
-void add_at_start(TreeNode *newNode, TreeNode *parent) {
+void add_at_start(TreeNode *newNode, TreeNode *parent)
+{
   newNode->next = parent->first_child;
   parent->first_child = newNode;
 }
 
-void delete_tree(TreeNode *root) {
+void delete_tree(TreeNode *root)
+{
   // End of children list
-  if (root == NULL) {
+  if (root == NULL)
+  {
     return;
   }
 
@@ -60,7 +59,8 @@ void delete_tree(TreeNode *root) {
   TreeNode *temp_next;
 
   // Iterates through each child and deletes subdirectories recursively
-  while (temp) {
+  while (temp)
+  {
     temp_next = temp->next;
     delete_tree(temp);
     temp = temp_next;
@@ -74,4 +74,50 @@ void delete_tree(TreeNode *root) {
   free(root);
   root = NULL;
   return;
+}
+
+ElementType traversal(char *path, ElementType root)
+{
+  char **finalarray;
+  finalarray = String_Parser(path);
+  ElementType temp;
+  int length = len_of_parser_func(path) + 1;
+  if (is_Correct_Path(path, finalarray))
+  {
+    printf("INVALID PATH!\n");
+    return NULL;
+  }
+  if (strcmp(finalarray[0], root->file->name) == 0)
+  {
+    temp = root;
+    for (int i = 1; i < length; i++)
+    {
+      temp = findInTable(temp->ht, finalarray[i]);
+      if (temp == NULL)
+      {
+        return NULL;
+      }
+    }
+  }
+  return temp;
+}
+
+int print_contents(TreeNode *current){
+  TreeNode *temp = current->first_child;
+  int count = 0;
+
+  while (temp) {
+    count++;
+    // printf("%d. ", count);
+    // count++;
+    if (temp->file->is_file) {
+      printf("File:\t");
+    } else
+      printf("Folder:\t");
+
+    printf("%s\n", temp->file->name);
+    temp = temp->next;
+  }
+  printf("%d item(s) in directory %s\n\n", count, current->file->name);
+  return count;
 }

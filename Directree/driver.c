@@ -17,24 +17,6 @@ void get_input_data(char *name, bool *is_file) {
 Takes arg: pointer to current directory
 Prints all the contents present in the current directory
 */
-void print_contents(TreeNode *current) {
-  TreeNode *temp = current->first_child;
-  int count = 0;
-
-  while (temp) {
-    count++;
-    // printf("%d. ", count);
-    // count++;
-    if (temp->file->is_file) {
-      printf("File:\t");
-    } else
-      printf("Folder:\t");
-
-    printf("%s\n", temp->file->name);
-    temp = temp->next;
-  }
-  printf("%d item(s) in directory %s\n\n", count, current->file->name);
-}
 
 int main() {
   TreeNode *root = init_node("root", 0, NULL);
