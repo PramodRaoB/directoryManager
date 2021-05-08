@@ -64,9 +64,9 @@ AliasTableStruct InsertPathQP(char curr_path[MAX_PATH_LENGTH], char curr_alias[M
                 if (d == 'Y')
                 {
                     char dummy[MAX_ALIAS_LENGTH];
-                    printf("Enter new alias.\n");
+                    printf("Enter new alias:\n");
                     scanf("%s", dummy);
-                    InsertPathQP(curr_path, dummy, table);
+                    table = InsertPathQP(curr_path, dummy, table);
                     return table;
                 }
                 else
@@ -113,14 +113,17 @@ AliasTableStruct Rehash(AliasTableStruct Old)
         }
     }
     /*Freed the old hashtable*/
-
+    
     free(Old->start);
     free(Old);
 
     return New;
 }
 
-//Find the alias in a given table
+/* 
+Given an Alias, find the alias in a given table
+and return the path
+*/
 char *FindAlias(char *alias, AliasTableStruct table)
 {
     Alias *qp = table->start;
@@ -138,7 +141,9 @@ char *FindAlias(char *alias, AliasTableStruct table)
         val++;
     }
 
-    // If there is no path corresponding to the given alias, the function returns INVALID
+    /* 
+    If there is no path corresponding to the given alias, the function returns INVALID
+    */
     char * error = "INVALID";
     return error;
 }
