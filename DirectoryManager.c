@@ -81,20 +81,9 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
   /*Returning NULL if path found wrong*/
   if (current == NULL)
   {
-
     // no changes to the input root
-    printf("INVALID PATH!\n\n");
+    printf("Error: INVALID PATH\n");
     return root;
-  }
-
-  /*The given path leads to a file*/
-  if (current->file->is_file)
-  {
-    printf("Alias retrieved to file: %s\n", current->file->name);
-  }
-  else
-  {
-    printf("Alias retrieved to directory: %s\n", current->file->name);
   }
 
   return current;
