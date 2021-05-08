@@ -1,8 +1,6 @@
 #ifndef __TREE_H__
 #define __TREE_H__
 
-#include <stdbool.h>
-#include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -37,7 +35,8 @@ void add_node(TreeNode *parent, char *name, bool is_file);
  * */
 void add_at_start(TreeNode *newNode, TreeNode *parent);
 
-//Given the absolute path of a file/dir, the function returns the pointer to that file/dir
+// Given the absolute path of a file/dir, the function returns the pointer to
+// that file/dir
 TreeNode *traversal(char *path, TreeNode *root);
 
 /*
@@ -51,6 +50,5 @@ int print_contents(TreeNode *current);
  * Takes in pointer to the root node and deletes the whole tree after
  * */
 void delete_tree(TreeNode *root);
-
 
 #endif

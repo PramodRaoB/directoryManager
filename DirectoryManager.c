@@ -1,12 +1,11 @@
 #include "DirectoryManager.h"
+#include "Directree/trie.h"
 
-void ADD(char *fileName, bool isFile, TreeNode *currentDir)
-{
+void ADD(char *fileName, bool isFile, TreeNode *currentDir) {
   add_node(currentDir, fileName, isFile);
 }
 
-TreeNode *MOVE(TreeNode *root)
-{
+TreeNode *MOVE(TreeNode *root) {
   char *input_string;
   TreeNode *current;
 
@@ -16,16 +15,14 @@ TreeNode *MOVE(TreeNode *root)
 
   /*error*/
   /*Returning NULL if path is wrong*/
-  if (current == NULL)
-  {
+  if (current == NULL) {
     // no changes to the input root
     printf("Error: Invalid path\n\n");
     return root;
   }
 
   /*The given path leads to a file*/
-  if (current->file->is_file)
-  {
+  if (current->file->is_file) {
     // no changes to the input root
     printf("Error: Given path leads to a file, move was unsuccessful\n");
     return root;
@@ -34,17 +31,15 @@ TreeNode *MOVE(TreeNode *root)
   return current;
 }
 
-void ALIAS(AliasTableStruct table, TreeNode *root)
-{
+void ALIAS(AliasTableStruct table, TreeNode *root) {
   char path[MAX_PATH_LENGTH];
   char alias[MAX_ALIAS_LENGTH];
   scanf("%s %s", path, alias);
   TreeNode *Node;
   Node = traversal(path, root);
 
-  if (Node != NULL&& Node->file->is_file !=1)
-  {
-    
+  if (Node != NULL && Node->file->is_file != 1) {
+
     table = InsertPathQP(path, alias, table);
     /*
     if (Node->file->is_file)
@@ -57,17 +52,13 @@ void ALIAS(AliasTableStruct table, TreeNode *root)
     }
     */
     return;
-  }
-  else if(Node!=NULL)
-  {
+  } else if (Node != NULL) {
     printf("Error: %s is a file\n", Node->file->name);
-  }
-  else
-  printf("Error: Invalid Path");
+  } else
+    printf("Error: Invalid Path");
 }
 
-TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
-{
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
   char alias[MAX_ALIAS_LENGTH];
   scanf("%s", alias);
   char *path = FindAlias(alias, table);
@@ -78,8 +69,7 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
 
   /*error*/
   /*Returning NULL if path found wrong*/
-  if (current == NULL)
-  {
+  if (current == NULL) {
     // no changes to the input root
     printf("Error: Invalid path\n");
     return root;
@@ -88,14 +78,15 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
   return current;
 }
 
-void FIND()
-{
+void FIND(TreeNode *currentDir) {
+  printf("Enter prefix string: ");
+  char *prefixStr = read_string();
+  printf("The following files/folders in the current directory contain prefix "
+         "%s:\n",
+         prefixStr);
+  printTrieWithPrefix(currentDir->childTrie, prefixStr);
 }
 
-void HELP()
-{
-}
+void HELP() {}
 
-void QUIT()
-{
-}
+void QUIT() {}
