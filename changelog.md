@@ -9,6 +9,16 @@
 - Added `string_parser.h` file.
 - Removed `get_input_string()` from tree.h since it is implemented already.
 
+## in branch `MoveFunction`
+
+### Commits today: 1
+
+- Added `Move` function in `DirectoryManager.c` with error handling
+- Moved `print_contents` function from `driver.c` to `tree.c`.
+- Changed some comments to make it show up on the linter (Will do more in the next commit).
+- Removed unwanted declarations in tree.h.
+- Updated README.MD
+
 ---
 
 ## 06 May 2021

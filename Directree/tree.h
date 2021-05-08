@@ -1,7 +1,14 @@
 #ifndef __TREE_H__
 #define __TREE_H__
+
 #include <stdbool.h>
 #include <stdio.h>
+#include <assert.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 #include "NodeElement.h"
 
@@ -32,16 +39,17 @@ adds the node at beginning of child linked list
 */
 void add_at_start(TreeNode *newNode, TreeNode *parent);
 
-// takes a character aray and returns pointer to the treenode at the destination
-TreeNode *move(char *destination);
-
-
-// traverse tree, add node
-TreeNode *traverse_tree();
 
 void delete_tree(TreeNode *root);
 
 //Given the absolute path of a file/dir, the function returns the pointer to that file/dir
 ElementType traversal(char *path, ElementType root);
+
+/*
+ * Takes arg: pointer to current directory
+ * 8 Prints all the contents present in the current directory
+ * Returns number of files in the directory
+ * */
+int print_contents(ElementType current);
 
 #endif
