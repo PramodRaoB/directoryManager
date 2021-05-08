@@ -11,7 +11,7 @@ HashTable *initTable(int size)
   // mallocs
   HashTable *ht = (HashTable *)malloc(sizeof(HashTable));
   assert(ht != NULL);
-  ht->table = (ElementType *)malloc(sizeof(ElementType) * size);
+  ht->table = (TreeNode **)malloc(sizeof(TreeNode *) * size);
   assert(ht->table != NULL);
 
   // assignments
@@ -42,9 +42,9 @@ void rehashTable(HashTable *ht)
 {
   int newSize = nextPrime(ht->tableSize * 2 + 1);
   int oldSize = ht->tableSize;
-  ElementType *oldTable = ht->table;
+  TreeNode **oldTable = ht->table;
 
-  ElementType *newTable = (ElementType *)malloc(newSize * sizeof(ElementType));
+  TreeNode **newTable = (TreeNode **)malloc(newSize * sizeof(TreeNode *));
   assert(newTable != NULL);
   for (int i = 0; i < newSize; i++)
     newTable[i] = NULL;
@@ -65,7 +65,7 @@ void rehashTable(HashTable *ht)
 }
 
 
-void insertIntoTable(HashTable *ht, ElementType x)
+void insertIntoTable(HashTable *ht, TreeNode *x)
 {
   if (ht->tableSize <= ht->filledSize * 2)
   {
@@ -83,7 +83,7 @@ void insertIntoTable(HashTable *ht, ElementType x)
   ht->table[(newHash + offset) % ht->tableSize] = x;
 }
 
-ElementType findInTable(HashTable *ht, char *nodeName)
+TreeNode *findInTable(HashTable *ht, char *nodeName)
 {
   unsigned int searchHash = getHash(nodeName, ht->tableSize);
   int offset = 0;

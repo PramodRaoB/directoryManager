@@ -114,7 +114,7 @@ void delete_tree(TreeNode *root){
   // The root is either a file or an empty directory
   free(root->file->name);
   free(root->file);
-  free(root->ht->table);
+  free(root->ht->table);  // No need to free each element in the table array since they are just the node in the tree and it is freed anyway
   free(root->ht);
   free(root);
   root = NULL;

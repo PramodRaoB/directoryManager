@@ -28,12 +28,12 @@ void rehashTable(HashTable *ht);
  * if load factor of table is >= 0.5, rehashes the table
  * Uses quadratic probing for insertion
  * */
-void insertIntoTable(HashTable *ht, ElementType x);
+void insertIntoTable(HashTable *ht, TreeNode *x);
 
 /*
  * Given a string, returns pointer to node if it exists in the hashtable
  * returns NULL if not found
  * */
-ElementType findInTable(HashTable *ht, char *node);
+TreeNode *findInTable(HashTable *ht, char *node);
 
 #endif
