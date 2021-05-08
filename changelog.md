@@ -2,12 +2,14 @@
 
 ## 08 May 2021
 
-## by Tejah S S (@BuzzingTaz) in branch `dynamic_string` (merged)
+## by Tejah S S (@BuzzingTaz) in branch main
 
 ### Commits today: 1
 
 - Added `string_parser.h` file.
 - Removed `get_input_string()` from tree.h since it is implemented already.
+
+---
 
 ## 06 May 2021
 
