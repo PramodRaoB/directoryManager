@@ -9,10 +9,10 @@
 void STARTUP();
 /*
  * Adds given file/folder into current directory
- * Takes file name, type and current directory as parameters
- * Calls the add_node function on current directory
+ * It then takes inputs from the user for the name and type of node to be added
+ * Calls the add_node function on current directory with the given details
  * */
-void ADD(char *fileName, bool isFile, TreeNode *currentDir);
+void ADD(TreeNode *currentDir);
 
 /*
  * MOVE function takes in the pointer to the directory from which the path is
