@@ -2,6 +2,11 @@
 #define __DIRECTORYMANAGER_H__
 
 #include "include.h"
+
+/*
+ * Prints a welcome message
+ * */
+void STARTUP();
 /*
  * Adds given file/folder into current directory
  * Takes file name, type and current directory as parameters
@@ -27,6 +32,8 @@ void ALIAS(AliasTableStruct table, TreeNode *root);
 TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root);
 
 void FIND();
+
+void HELP();
 
 void QUIT();
 

@@ -4,6 +4,14 @@
 
 ## by Tejah S S (@BuzzingTaz) in branch main
 
+### Commits today: 4
+
+- Changed error message style
+- Delete function for the alias hash table and minor changes there.
+- Renamed all test files with `main()` to driver.c to make it easier to remove while testing main.
+- Wrote pseudocode for main.c
+- Bug fixes in `string_parser.c`
+
 ### Commits today: 2
 
 - Added macros in `Hash(Alias)/hash.h` named MAX_ALIAS_LENGTH and MAX_PATH_LENGTH to generalize.

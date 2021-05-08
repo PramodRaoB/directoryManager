@@ -136,6 +136,7 @@ char **String_Parser(char *path)
 // Takes a 1D array, path and a 2D array, words. The 2D array, words, has all the files/directory names stored in it
 int is_Correct_Path(char *path, char **words)
 {
+    int no_of_words = len_of_parser_func(path) + 1;
     int len = strlen(path) - 1;
     int flag = 0;
     for (int i = 0; i < no_of_words; i++)
@@ -153,6 +154,7 @@ int is_Correct_Path(char *path, char **words)
 // Takes the 2D array words and the 1D array path as parameters
 void print_len_directories(char *path, char **words)
 {
+    int no_of_words = len_of_parser_func(path) + 1;
     int len = strlen(path) - 1;
     for (int i = 0; i < no_of_words; i++)
     {
@@ -171,38 +173,3 @@ void print_words(char **words, char *path)
     }
 }
 
-// to test the functionality
-// Definition of a correct path is taken to be as follows :
-// Location1/Location2/Location3....../LocationN
-// Note there isnt a / before location 1 for a correct path.
-// Any other path that doesnt follow the given structure is going to throw an error message of INVALID PATH.
-
-// final_arr contains all the files/directories names in a path
-
-int main()
-{
-    char ch = 'Y';
-    while (ch == 'Y')
-    {
-        char *path;
-        path = read_string();
-        String_Parser(path);
-        char **final_arr;
-        final_arr = String_Parser(path);
-        if (is_Correct_Path(path, final_arr))
-        {
-            printf("\nINVALID PATH!!!\n");
-            printf("PLEASE ENTER A VALID PATH!!!\n");
-            printf("\n");
-        }
-        else
-        {
-            printf("\nTHE PATH CONTAINS THE FOLLOWING DIRECTORIES/FILES: \n");
-            print_words(final_arr, path);
-            printf("\n");
-        }
-        printf("DO U WANT TO CONTINUE?(Y/N)\n");
-        char buff;
-        scanf("%c%c", &ch, &buff);
-    }
-}

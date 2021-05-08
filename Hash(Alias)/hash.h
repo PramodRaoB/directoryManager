@@ -8,7 +8,7 @@
 #include <string.h>
 #include "../utils/utils.h"
 
-
+#define INITIAL_TABLE_SIZE 16
 #define MAX_PATH_LENGTH 1001
 #define MAX_ALIAS_LENGTH 100
 
@@ -45,5 +45,7 @@ llu HornerHash(char arr[MAX_ALIAS_LENGTH], llu size);
 
 /*Finds the path for a given alias*/
 char *FindAlias(char *alias, AliasTableStruct table);
+
+void DeleteAliasTable(AliasTableStruct table);
 
 #endif

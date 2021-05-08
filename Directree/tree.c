@@ -68,7 +68,7 @@ TreeNode *traversal(char *path, TreeNode *root)
     }
   }
   else{
-    printf("INCORRECT root ARGUMENT\n");
+    printf("Error: Incorrect root argument\n");
   }
   return temp;
 }

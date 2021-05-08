@@ -19,7 +19,7 @@ TreeNode *MOVE(TreeNode *root)
   if (current == NULL)
   {
     // no changes to the input root
-    printf("INVALID PATH!\n\n");
+    printf("Error: Invalid path\n\n");
     return root;
   }
 
@@ -27,8 +27,7 @@ TreeNode *MOVE(TreeNode *root)
   if (current->file->is_file)
   {
     // no changes to the input root
-    printf("GIVEN PATH LEADS TO A FILE\n");
-    printf("COULD NOT MOVE TO THE LOCATION\n\n");
+    printf("Error: Given path leads to a file, move was unsuccessful\n");
     return root;
   }
 
@@ -82,7 +81,7 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
   if (current == NULL)
   {
     // no changes to the input root
-    printf("Error: INVALID PATH\n");
+    printf("Error: Invalid path\n");
     return root;
   }
 
@@ -90,6 +89,10 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root)
 }
 
 void FIND()
+{
+}
+
+void HELP()
 {
 }
 
