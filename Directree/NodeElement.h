@@ -3,6 +3,7 @@
 
 #define NAME_SIZE 100
 
+#include "trie.h"
 #include <stdbool.h>
 
 typedef struct treenode TreeNode;
@@ -18,6 +19,7 @@ struct treenode {
   TreeNode *parent;
 
   HashTable *ht;
+  Trie childTrie;
 };
 
 struct filedetails {

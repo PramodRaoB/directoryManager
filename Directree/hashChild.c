@@ -5,9 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-HashTable *initTable(int size)
-{
+HashTable *initTable(int size) {
   // mallocs
   HashTable *ht = (HashTable *)malloc(sizeof(HashTable));
   assert(ht != NULL);
@@ -24,13 +22,11 @@ HashTable *initTable(int size)
   return ht;
 }
 
-unsigned int getHash(char *str, int m)
-{
+unsigned int getHash(char *str, int m) {
   unsigned long hash = 5381;
 
   int len = strlen(str);
-  for (int i = 0; i < len; i++)
-  {
+  for (int i = 0; i < len; i++) {
     char c = str[i];
     hash = (((hash << 5) + hash) + c) % m; /* hash * 33 + c */
   }
@@ -38,8 +34,7 @@ unsigned int getHash(char *str, int m)
   return hash;
 }
 
-void rehashTable(HashTable *ht)
-{
+void rehashTable(HashTable *ht) {
   int newSize = nextPrime(ht->tableSize * 2 + 1);
   int oldSize = ht->tableSize;
   TreeNode **oldTable = ht->table;
@@ -53,10 +48,8 @@ void rehashTable(HashTable *ht)
   ht->tableSize = newSize;
   ht->filledSize = 0;
 
-  for (int i = 0; i < ht->tableSize; i++)
-  {
-    if (oldTable[i])
-    {
+  for (int i = 0; i < ht->tableSize; i++) {
+    if (oldTable[i]) {
       insertIntoTable(ht, oldTable[i]);
     }
   }
@@ -64,37 +57,30 @@ void rehashTable(HashTable *ht)
   free(oldTable);
 }
 
-
-void insertIntoTable(HashTable *ht, TreeNode *x)
-{
-  if (ht->tableSize <= ht->filledSize * 2)
-  {
+void insertIntoTable(HashTable *ht, TreeNode *x) {
+  if (ht->tableSize <= ht->filledSize * 2) {
     rehashTable(ht);
   }
 
   unsigned int newHash = getHash(x->file->name, ht->tableSize);
   int offset = 0;
   int toAdd = 1;
-  while (ht->table[(newHash + offset) % ht->tableSize] != NULL)
-  {
+  while (ht->table[(newHash + offset) % ht->tableSize] != NULL) {
     offset += toAdd;
     toAdd += 2;
   }
   ht->table[(newHash + offset) % ht->tableSize] = x;
 }
 
-TreeNode *findInTable(HashTable *ht, char *nodeName)
-{
+TreeNode *findInTable(HashTable *ht, char *nodeName) {
   unsigned int searchHash = getHash(nodeName, ht->tableSize);
   int offset = 0;
   int toAdd = 1;
 
-  while (ht->table[(searchHash + offset) % ht->tableSize] != NULL)
-  {
+  while (ht->table[(searchHash + offset) % ht->tableSize] != NULL) {
     char *potential =
         ht->table[(searchHash + offset) % ht->tableSize]->file->name;
-    if (strcmp(potential, nodeName) == 0)
-    {
+    if (strcmp(potential, nodeName) == 0) {
       return ht->table[(searchHash + offset) % ht->tableSize];
     }
     offset += toAdd;

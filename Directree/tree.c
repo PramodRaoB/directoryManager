@@ -1,10 +1,10 @@
-#include "hashChild.h"
 #include "tree.h"
 #include "../utils/string_parser.h"
+#include "hashChild.h"
 
 #define ll long long int
 
-TreeNode *init_node(char *name, bool is_file, TreeNode *parent){
+TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   int name_length = strlen(name) + 1;
 
   // Mallocs
@@ -33,47 +33,41 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent){
   return new_node;
 }
 
-void add_node(TreeNode *parent, char *name, bool is_file){
+void add_node(TreeNode *parent, char *name, bool is_file) {
   TreeNode *new_node = init_node(name, is_file, parent);
   insertIntoTable(parent->ht, new_node);
   add_at_start(new_node, parent);
 }
 
-void add_at_start(TreeNode *newNode, TreeNode *parent){
+void add_at_start(TreeNode *newNode, TreeNode *parent) {
   newNode->next = parent->first_child;
   parent->first_child = newNode;
 }
 
-TreeNode *traversal(char *path, TreeNode *root)
-{
+TreeNode *traversal(char *path, TreeNode *root) {
   char **finalarray;
   finalarray = String_Parser(path);
   TreeNode *temp = NULL;
   int length = len_of_parser_func(path) + 1;
-  if (is_Correct_Path(path, finalarray))
-  {
+  if (is_Correct_Path(path, finalarray)) {
     return NULL;
   }
-  
-  if (strcmp(finalarray[0], root->file->name) == 0)
-  {
+
+  if (strcmp(finalarray[0], root->file->name) == 0) {
     temp = root;
-    for (int i = 1; i < length; i++)
-    {
+    for (int i = 1; i < length; i++) {
       temp = findInTable(temp->ht, finalarray[i]);
-      if (temp == NULL)
-      {
+      if (temp == NULL) {
         return NULL;
       }
     }
-  }
-  else{
+  } else {
     printf("Error: Incorrect root argument\n");
   }
   return temp;
 }
 
-int print_contents(TreeNode *current){
+int print_contents(TreeNode *current) {
   TreeNode *temp = current->first_child;
   int count = 0;
 
@@ -93,10 +87,9 @@ int print_contents(TreeNode *current){
   return count;
 }
 
-void delete_tree(TreeNode *root){
+void delete_tree(TreeNode *root) {
   // End of children list
-  if (root == NULL)
-  {
+  if (root == NULL) {
     return;
   }
 
@@ -104,8 +97,7 @@ void delete_tree(TreeNode *root){
   TreeNode *temp_next;
 
   // Iterates through each child and deletes subdirectories recursively
-  while (temp)
-  {
+  while (temp) {
     temp_next = temp->next;
     delete_tree(temp);
     temp = temp_next;
@@ -114,8 +106,10 @@ void delete_tree(TreeNode *root){
   // The root is either a file or an empty directory
   free(root->file->name);
   free(root->file);
-  if(root->ht){
-    free(root->ht->table);  // No need to free each element in the table array since they are just the node in the tree and it is freed anyway
+  if (root->ht) {
+    free(root->ht->table); // No need to free each element in the table array
+                           // since they are just the node in the tree and it is
+                           // freed anyway
     free(root->ht);
   }
   free(root);
