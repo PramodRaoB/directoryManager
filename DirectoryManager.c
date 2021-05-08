@@ -1,7 +1,18 @@
 #include "DirectoryManager.h"
-#include "Directree/trie.h"
 
-void ADD(char *fileName, bool isFile, TreeNode *currentDir) {
+void ADD(TreeNode *currentDir) {
+  char fileName[MAX_NAME_LENGTH];
+  char typeChoice[10];
+  bool isFile;
+  scanf("%s %s", fileName, typeChoice);
+  if (strcmp(typeChoice, "FILE") == 0)
+    isFile = true;
+  else if (strcmp(typeChoice, "FOLDER") == 0)
+    isFile = false;
+  else {
+    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\n");
+    return;
+  }
   add_node(currentDir, fileName, isFile);
 }
 
