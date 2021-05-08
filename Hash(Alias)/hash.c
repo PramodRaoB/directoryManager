@@ -118,6 +118,10 @@ AliasTableStruct Rehash(AliasTableStruct Old)
             InsertPathQP(Old->start[i].path, Old->start[i].ali, New);
         }
     }
+    /*Freed the old hashtable*/
+
+    free(Old->start);
+    free(Old);
 
     return New;
 }
