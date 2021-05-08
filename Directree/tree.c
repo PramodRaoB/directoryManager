@@ -1,6 +1,7 @@
 #include "tree.h"
 #include "../utils/string_parser.h"
 #include "hashChild.h"
+#include "trie.h"
 
 #define ll long long int
 
@@ -16,10 +17,15 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
   new_node->file->name = (char *)malloc(name_length * sizeof(char));
   assert(new_node->file->name != NULL);
 
-  if (!is_file)
+  if (!is_file) {
     new_node->ht = initTable(1009);
-  else
+    new_node->childTrie = createTrie();
+  }
+
+  else {
     new_node->ht = NULL;
+    new_node->childTrie = NULL;
+  }
 
   // Assignments
   new_node->file->is_file = is_file;
@@ -35,6 +41,7 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
 
 void add_node(TreeNode *parent, char *name, bool is_file) {
   TreeNode *new_node = init_node(name, is_file, parent);
+  trieInsert(parent->childTrie, name);
   insertIntoTable(parent->ht, new_node);
   add_at_start(new_node, parent);
 }
