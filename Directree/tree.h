@@ -41,4 +41,7 @@ TreeNode *traverse_tree();
 
 void delete_tree(TreeNode *root);
 
+//Given the absolute path of a file/dir, the function returns the pointer to that file/dir
+ElementType traversal(char *path, ElementType root);
+
 #endif
