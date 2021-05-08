@@ -6,12 +6,12 @@
 #include "NodeElement.h"
 
 /*
-Inputs: File name, isFIle, address of the parent node
-mallocs and initialises all properties of the node
-returns pointer to the created node
+ * Inputs: File name, isFIle, address of the parent node
+ * mallocs and initialises all properties of the node
+ * returns pointer to the created node
 
-Call this function with parent = NULL to create an empty tree
-*/
+ * Call this function with parent = NULL to create an empty tree
+ * */
 TreeNode *init_node(char *name, bool is_file, TreeNode *parent);
 
 /*
@@ -35,7 +35,6 @@ void add_at_start(TreeNode *newNode, TreeNode *parent);
 // takes a character aray and returns pointer to the treenode at the destination
 TreeNode *move(char *destination);
 
-void get_input_directory();
 
 // traverse tree, add node
 TreeNode *traverse_tree();
