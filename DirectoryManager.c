@@ -1,5 +1,9 @@
 #include "DirectoryManager.h"
 
+void ADD(char *fileName, bool isFile, TreeNode *currentDir) {
+  add_node(currentDir, fileName, isFile);
+}
+
 ElementType MOVE(ElementType root){
   char *input_string;
   ElementType current;
@@ -28,6 +32,3 @@ ElementType MOVE(ElementType root){
   return current;
 
 }
-
-
-
