@@ -84,7 +84,6 @@ ElementType traversal(char *path, ElementType root)
   int length = len_of_parser_func(path) + 1;
   if (is_Correct_Path(path, finalarray))
   {
-    printf("INVALID PATH!\n");
     return NULL;
   }
   if (strcmp(finalarray[0], root->file->name) == 0)
