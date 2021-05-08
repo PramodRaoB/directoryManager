@@ -119,3 +119,26 @@ AliasTableStruct Rehash(AliasTableStruct Old)
 
     return New;
 }
+
+//Find the alias in a given table
+char *FindAlias(char *alias, AliasTableStruct table)
+{
+    Alias *qp = table->start;
+    llu size = table->table_size;
+    llu hash = HornerHash(alias, size);
+    llu temp = hash, val = 1;
+
+    while (strcmp(qp[hash].path, "VALID") != 0)
+    {
+        if (strcmp(qp[hash].ali, alias) == 0)
+        {
+            return qp[hash].path;
+        }
+        hash = (temp + val * val) % size;
+        val++;
+    }
+
+    // If there is no path corresponding to the given alias, the function returns INVALID
+    char * error = "INVALID";
+    return error;
+}
