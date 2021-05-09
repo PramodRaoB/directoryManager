@@ -103,5 +103,6 @@ void deleteTrie(Trie T) {
     if (T->children[i] != NULL)
       deleteTrie(T->children[i]);
   }
+  free(T->children);
   free(T);
 }
