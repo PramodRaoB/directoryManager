@@ -9,6 +9,10 @@ char *read_string(void) {
   int len = 0;
   int update = 16;
   char ch = getc(stdin);
+  if(ch=='\n')
+  {
+
+  }
   int size = 0;
 
   arr = (char *)malloc(update * sizeof(char));
@@ -30,7 +34,11 @@ char *read_string(void) {
     arr[len] = ch;
     len++;
   }
-
+  if(len==0)
+  {
+    arr[len]='\0';
+    return arr;
+  }
   arr[len - 1] = '\0';
   return arr;
 }
