@@ -69,7 +69,8 @@ void add_node(TreeNode *parent, char *name, bool is_file) {
   if (insertIntoTable(parent->ht, new_node))
     add_at_start(new_node, parent);
   else {
-    printf("File/folder with the given name already exists\nNothing was added\n");
+    printf(
+        "File/folder with the given name already exists\nNothing was added\n");
     delete_tree(new_node);
   }
 }
@@ -85,6 +86,10 @@ TreeNode *traversal(char *path, TreeNode *root) {
   TreeNode *temp = NULL;
   int length = len_of_parser_func(path) + 1;
   if (is_Correct_Path(path, finalarray)) {
+    for (int i = 0; i < length; i++) {
+      free(finalarray[i]);
+    }
+    free(finalarray);
     return NULL;
   }
 
@@ -93,12 +98,20 @@ TreeNode *traversal(char *path, TreeNode *root) {
     for (int i = 1; i < length; i++) {
       temp = findInTable(temp->ht, finalarray[i]);
       if (temp == NULL) {
+        for (int i = 0; i < length; i++) {
+          free(finalarray[i]);
+        }
+        free(finalarray);
         return NULL;
       }
     }
   } else {
     printf("Error: Incorrect root argument\n");
   }
+  for (int i = 0; i < length; i++) {
+    free(finalarray[i]);
+  }
+  free(finalarray);
   return temp;
 }
 
@@ -126,7 +139,7 @@ char *get_path(TreeNode *current) {
   char names[100][100], c;
   int i = 0, j, k, x = 0;
 
-  for (j = 0;j < 100; j++) {
+  for (j = 0; j < 100; j++) {
     names[j][0] = 0;
   }
 
@@ -138,7 +151,7 @@ char *get_path(TreeNode *current) {
   strcpy(names[i], "root");
   i++;
 
-  char* path = malloc((i)*100*sizeof(char)+1);
+  char *path = malloc((i)*100 * sizeof(char) + 1);
 
   for (int j = i - 1; j >= 0; j--) {
     k = 0, c = '0';
@@ -179,7 +192,7 @@ void delete_tree(TreeNode *root) {
   // The root is either a file or an empty directory
   free(root->file->name);
   free(root->file);
-  if(root->childTrie)
+  if (root->childTrie)
     deleteTrie(root->childTrie);
   if (root->ht) {
     free(root->ht->table); // No need to free each element in the table array
