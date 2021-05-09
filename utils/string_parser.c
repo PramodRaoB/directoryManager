@@ -101,6 +101,7 @@ char **String_Parser(char *path) {
     words[i][size] = '\0';
   }
 
+  free(indices);
   return words;
 }
 
