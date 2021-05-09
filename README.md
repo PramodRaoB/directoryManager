@@ -12,7 +12,7 @@ Repo for the DSA Mini-project Directory Manager
 - [X] Array-based implementation for node children
 - [X] Use hashing for O(1) finding of children
 - [X] Implement hashing based traversal
-- [ ] Better find function (possibly trie based)
+- [X] Better find function (possibly trie based)
 
 ### Styling
 
