@@ -3,7 +3,7 @@
 
 // Memory optimisation while reading a character string
 // Uses vector based implememntation
-// reallocates memory to 2*size everytime it gets full.
+// reallocates memory to 2*size everytime it gets full
 char *read_string(void) {
   char *arr;
   int len = 0;
