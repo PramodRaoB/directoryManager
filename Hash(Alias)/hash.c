@@ -28,7 +28,7 @@ llu HornerHash(char arr[MAX_ALIAS_LENGTH], llu size) {
   return hash;
 }
 
-/*Insert Path lluo quadratic probing table, qp = quadratic probing*/
+/*Insert Path llu quadratic probing table, qp = quadratic probing*/
 AliasTableStruct InsertPathQP(char curr_path[MAX_PATH_LENGTH],
                               char curr_alias[MAX_ALIAS_LENGTH],
                               AliasTableStruct table) {
