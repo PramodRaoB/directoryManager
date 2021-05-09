@@ -70,6 +70,7 @@ void add_node(TreeNode *parent, char *name, bool is_file) {
     add_at_start(new_node, parent);
   else {
     printf("File/folder with the given name already exists\nNothing was added\n");
+    delete_tree(new_node);
   }
 }
 
