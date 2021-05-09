@@ -1,7 +1,7 @@
 #include "DirectoryManager.h"
 #include "include.h"
 
-void main() {
+int main() {
   TreeNode *root = init_tree();
   AliasTableStruct alias_table = CreateHash(INITIAL_TABLE_SIZE);
   char command[15];
@@ -36,7 +36,7 @@ void main() {
     } else if (!strcasecmp(command, "help")) {
       HELP();
       continue;
-    } else if(!strcasecmp(command, "cd")) {
+    } else if (!strcasecmp(command, "cd")) {
       current = MOVE(current, current);
       continue;
     } else if (!strcasecmp(command, "quit")) {
@@ -45,5 +45,5 @@ void main() {
     } else
       printf("Invalid command, try again. Type \"help\" for help\n");
   }
-  return;
+  return 0;
 }
