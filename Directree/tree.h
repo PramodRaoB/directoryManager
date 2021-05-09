@@ -54,12 +54,12 @@ int print_contents(TreeNode *current);
 /*
  * Takes current node and returns full path to it
  * */
-char* get_path(TreeNode* current);
+char *get_path(TreeNode *current);
 
 /*
  * Gets path by calling get_path and prints path to current node
  * */
-void print_current_path(TreeNode* current);
+void print_current_path(TreeNode *current);
 
 /*
  * Takes in pointer to the root node and deletes the whole tree after

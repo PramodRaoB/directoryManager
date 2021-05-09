@@ -1,8 +1,6 @@
 #include "DirectoryManager.h"
 
-void STARTUP(){
-
-}
+void STARTUP() {}
 void ADD(TreeNode *currentDir) {
   char fileName[MAX_NAME_LENGTH];
   char typeChoice[10];
@@ -13,7 +11,8 @@ void ADD(TreeNode *currentDir) {
   else if (strcasecmp(typeChoice, "FOLDER") == 0)
     isFile = false;
   else {
-    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\nNote: File/Folder name cannot contain spaces.");
+    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\nNote: "
+           "File/Folder name cannot contain spaces.");
     return;
   }
   add_node(currentDir, fileName, isFile);
@@ -24,7 +23,7 @@ TreeNode *MOVE(TreeNode *root) {
   TreeNode *current;
 
   input_string = read_string();
-  if(input_string[0] == 0){
+  if (input_string[0] == 0) {
     printf("Error: Invalid path1\n\n");
     return root;
   }
@@ -100,10 +99,9 @@ void FIND(TreeNode *currentDir) {
 
 void HELP() {}
 
-void QUIT(TreeNode* root, AliasTableStruct alias_table) {
+void QUIT(TreeNode *root, AliasTableStruct alias_table) {
   delete_tree(root);
   DeleteAliasTable(alias_table);
 
   exit(0);
-
 }
