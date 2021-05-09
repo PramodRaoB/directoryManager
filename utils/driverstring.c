@@ -2,7 +2,8 @@
 // // Definition of a correct path is taken to be as follows :
 // // Location1/Location2/Location3....../LocationN
 // // Note there isnt a / before location 1 for a correct path.
-// // Any other path that doesnt follow the given structure is going to throw an error message of INVALID PATH.
+// // Any other path that doesnt follow the given structure is going to throw an
+// error message of INVALID PATH.
 
 // // final_arr contains all the files/directories names in a path
 
@@ -25,9 +26,8 @@
 //         }
 //         else
 //         {
-//             printf("\nTHE PATH CONTAINS THE FOLLOWING DIRECTORIES/FILES: \n");
-//             print_words(final_arr, path);
-//             printf("\n");
+//             printf("\nTHE PATH CONTAINS THE FOLLOWING DIRECTORIES/FILES:
+//             \n"); print_words(final_arr, path); printf("\n");
 //         }
 //         printf("DO U WANT TO CONTINUE?(Y/N)\n");
 //         char buff;

@@ -1,15 +1,15 @@
 #ifndef __INCLUDE_H__
 #define __INCLUDE_H__
 
+#include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <assert.h>
 #include <string.h>
-#include <stdbool.h>
 
-#include "Directree/tree.h"
-#include "Directree/hashChild.h"
 #include "Directree/NodeElement.h"
+#include "Directree/hashChild.h"
+#include "Directree/tree.h"
 
 #include "Hash(Alias)/hash.h"
 

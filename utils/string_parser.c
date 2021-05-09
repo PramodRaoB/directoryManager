@@ -15,7 +15,7 @@ char *read_string(void) {
   // printf("Enter The Path: \n");
   while (ch != '\n') {
     ch = getc(stdin);
-    if(ch == ' '){
+    if (ch == ' ') {
       printf("Path cannot contain spaces\n");
       arr[0] = 0;
       return arr;
@@ -31,7 +31,7 @@ char *read_string(void) {
     len++;
   }
 
-  arr[len-1] = '\0';
+  arr[len - 1] = '\0';
   return arr;
 }
 

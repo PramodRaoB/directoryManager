@@ -10,27 +10,28 @@
  * 2 xor 6 = 4 and 4 xor 6 = 2
  * usage of this bit operation speeds up computation
  * as opposed to using the % operator for the incrementing variable
-*/
+ */
 
 llu nextPrime(llu input) {
-  if (input < 0) return -1;
+  if (input < 0)
+    return -1;
 
   switch (input) {
-   case 0:
-   case 1:
-   case 2:
-     return 2;
-   case 3:
-     return 3;
-   case 4:
-   case 5:
-     return 5;
+  case 0:
+  case 1:
+  case 2:
+    return 2;
+  case 3:
+    return 3;
+  case 4:
+  case 5:
+    return 5;
   }
 
   llu i = input % 6;
   llu x = i < 2 ? 1 : 5;
   input = 6 * (input / 6) + x;
-  for (i = (3 + x) / 2; !__isPrime(input); input += i) 
+  for (i = (3 + x) / 2; !__isPrime(input); input += i)
     i ^= 6;
 
   return input;
@@ -38,7 +39,7 @@ llu nextPrime(llu input) {
 
 bool __isPrime(llu input) {
   llu x = 4;
-  for (llu i = 5; true ; i += x) {
+  for (llu i = 5; true; i += x) {
     if (input % i == 0)
       return false;
     llu q = input / i;

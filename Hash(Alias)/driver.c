@@ -21,9 +21,9 @@
 //         scanf("%s %s", arr1, arr2);
 //         table = InsertPathQP (arr1, arr2, table);
 //         int hash = HornerHash(arr2,table->table_size);
-//         printf("%s\n%s\n%lld\n%lld\n", table->start[hash].path, table->start[hash].ali,table->num_elems,table->table_size);
-//         char *path = FindAlias(arr2, table);
-//         printf("%s\n", path);
+//         printf("%s\n%s\n%lld\n%lld\n", table->start[hash].path,
+//         table->start[hash].ali,table->num_elems,table->table_size); char
+//         *path = FindAlias(arr2, table); printf("%s\n", path);
 //     }
 // }
 

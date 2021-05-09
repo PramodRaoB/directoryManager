@@ -66,10 +66,9 @@ int insertIntoTable(HashTable *ht, TreeNode *x) {
   int offset = 0;
   int toAdd = 1;
   while (ht->table[(newHash + offset) % ht->tableSize] != NULL) {
-    char *potential =
-        ht->table[(newHash + offset) % ht->tableSize]->file->name;
+    char *potential = ht->table[(newHash + offset) % ht->tableSize]->file->name;
     if (strcmp(potential, x->file->name) == 0) {
-      return 0;   // Nothing was inserted
+      return 0; // Nothing was inserted
     }
     offset += toAdd;
     toAdd += 2;

@@ -5,7 +5,7 @@
 
 #define ll long long int
 
-TreeNode *init_tree(){
+TreeNode *init_tree() {
   char name[5] = "root";
 
   TreeNode *first_node = (TreeNode *)malloc(sizeof(TreeNode));
@@ -66,9 +66,9 @@ TreeNode *init_node(char *name, bool is_file, TreeNode *parent) {
 void add_node(TreeNode *parent, char *name, bool is_file) {
   TreeNode *new_node = init_node(name, is_file, parent);
   trieInsert(parent->childTrie, name);
-  if(insertIntoTable(parent->ht, new_node))
+  if (insertIntoTable(parent->ht, new_node))
     add_at_start(new_node, parent);
-  else{
+  else {
     printf("File/folder with the given name already exists\nNothing was added");
   }
 }
@@ -123,25 +123,25 @@ int print_contents(TreeNode *current) {
   return count;
 }
 
-char* get_path(TreeNode* current){
+char *get_path(TreeNode *current) {
   char names[100][100], c;
-  int i = 0, j, k, x=0;
+  int i = 0, j, k, x = 0;
 
-  for(j=0;j<100;j++){
+  for (j = 0; j < 100; j++) {
     names[j][0] = 0;
   }
-  while(current->parent != current){
+  while (current->parent != current) {
     strcpy(names[i], current->file->name);
     i++;
     current = current->parent;
   }
   names[i][0] = 0;
 
-  char* path = malloc((i)*100*sizeof(char)+1);
+  char *path = malloc((i)*100 * sizeof(char) + 1);
 
-  for(int j = i-1;j>=0;j--){
-    k=0, c = '0';
-    while(c){
+  for (int j = i - 1; j >= 0; j--) {
+    k = 0, c = '0';
+    while (c) {
       c = names[j][k];
       path[x] = c;
       k++;
@@ -150,16 +150,15 @@ char* get_path(TreeNode* current){
     path[x] = '/';
     x++;
   }
-  
+
   return path;
 }
 
-void print_current_path(TreeNode* current){
-  char* path = get_path(current);
+void print_current_path(TreeNode *current) {
+  char *path = get_path(current);
   printf("%s: ", path);
   free(path);
 }
-
 
 void delete_tree(TreeNode *root) {
   // End of children list
