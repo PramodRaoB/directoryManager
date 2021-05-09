@@ -24,16 +24,16 @@ TreeNode *MOVE(TreeNode *root) {
 
   input_string = read_string();
   if (input_string[0] == 0) {
-    printf("Error: Invalid path1\n\n");
+    printf("Error: Invalid path\n\n");
     return root;
   }
   current = traversal(input_string, root);
-
+  free(input_string);
   /*error*/
   /*Returning NULL if path is wrong*/
   if (current == NULL) {
     // no changes to the input root
-    printf("Error: Invalid path2\n\n");
+    printf("Error: Invalid path\n\n");
     return root;
   }
 
@@ -44,7 +44,7 @@ TreeNode *MOVE(TreeNode *root) {
     return root;
   }
 
-  printf("Move successful\n");
+  // printf("Move successful\n");
   return current;
 }
 
@@ -95,6 +95,7 @@ void FIND(TreeNode *currentDir) {
          "%s:\n",
          prefixStr);
   printTrieWithPrefix(currentDir->childTrie, prefixStr);
+  free(prefixStr);
 }
 
 void HELP() {}

@@ -36,9 +36,12 @@ void main() {
     } else if (!strcasecmp(command, "help")) {
       HELP();
       continue;
+    } else if(!strcasecmp(command, "cd")) {
+      current = MOVE(current);
+      continue;
     } else if (!strcasecmp(command, "quit")) {
       printf("Program is ending *sad windows xp noises*\n");
-      QUIT();
+      QUIT(root, alias_table);
     } else
       printf("Invalid command, try again. Type \"help\" for help\n");
   }

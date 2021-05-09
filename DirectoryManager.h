@@ -35,6 +35,6 @@ void FIND(TreeNode *currentDir);
 
 void HELP();
 
-void QUIT();
+void QUIT(TreeNode *root, AliasTableStruct alias_table);
 
 #endif
