@@ -11,8 +11,8 @@ void ADD(TreeNode *currentDir) {
   else if (strcasecmp(typeChoice, "FOLDER") == 0)
     isFile = false;
   else {
-    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\nNote: "
-           "File/Folder name cannot contain spaces.");
+    printf("Error: Invalid type (Valid types: \"file\", \"folder\")\n"
+           "Note: File/Folder name cannot contain spaces\n");
     return;
   }
   add_node(currentDir, fileName, isFile);
