@@ -1,12 +1,15 @@
 #include "DirectoryManager.h"
 
+
 void STARTUP() {
-  printf("==============================================================\n");
+  blue();
+  printf("______________________________________________________________\n");
   printf("\t\tDirectory management program\n");
   printf("Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
   printf("Enter 'help' for a full list of commands and usage\n");
   printf("Enter 'quit' to terminate the program\n");
-  printf("==============================================================\n");
+  printf("______________________________________________________________\n\n");
+  reset();
 }
 
 void ADD(TreeNode *currentDir) {
@@ -14,12 +17,14 @@ void ADD(TreeNode *currentDir) {
   char typeChoice[10];
   bool isFile;
   scanf("%s %s", fileName, typeChoice);
-  
+
   int name_size = strlen(fileName);
-  for(int i = 0;i < name_size; i++){
-    if(fileName[i] < 'a' || fileName[i] > 'z'){
+  for (int i = 0; i < name_size; i++) {
+    if (fileName[i] < 'a' || fileName[i] > 'z') {
+      red();
       printf("Error: Name expected in all lowercase\n");
       printf("Nothing was added\n");
+      reset();
       return;
     }
   }
@@ -28,8 +33,12 @@ void ADD(TreeNode *currentDir) {
   else if (strcasecmp(typeChoice, "FOLDER") == 0)
     isFile = false;
   else {
-    printf("Error: Invalid type (Valid types: \"file\", \"folder\")\n"
-           "Note: File/Folder name cannot contain spaces\n");
+    red();
+    printf("Error: Invalid type (Valid types: \"file\", \"folder\")\n");
+    reset();
+    yellow();
+    printf("Note: File/Folder name cannot contain spaces\n");
+    reset();
     return;
   }
   add_node(currentDir, fileName, isFile);
@@ -41,7 +50,9 @@ TreeNode *MOVE(TreeNode *root, TreeNode *current) {
 
   input_string = read_string();
   if (input_string[0] == 0) {
+    red();
     printf("Error: Invalid path\n\n");
+    reset();
     return current;
   }
   temp = traversal(input_string, root);
@@ -51,14 +62,18 @@ TreeNode *MOVE(TreeNode *root, TreeNode *current) {
   /*Returning NULL if path is wrong*/
   if (temp == NULL) {
     // no changes to the input root
+    red();
     printf("Error: Invalid path\n\n");
+    reset();
     return current;
   }
 
   /*The given path leads to a file*/
   if (temp->file->is_file) {
     // no changes to the input root
+    red();
     printf("Error: Given path leads to a file, move was unsuccessful\n");
+    reset();
     return current;
   }
 
@@ -79,9 +94,14 @@ AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root) {
     table = InsertPathQP(path, alias, table);
     return table;
   } else if (Node != NULL) {
+    red();
     printf("Error: %s is a file\n", Node->file->name);
-  } else
+    reset();
+  } else {
+    red();
     printf("Error: Invalid Path\n");
+    reset();
+  }
 
   return table;
 }
@@ -99,7 +119,9 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
   /*Returning NULL if path found wrong*/
   if (current == NULL) {
     // no changes to the input root
+    red();
     printf("Error: Invalid path\n");
+    reset();
     return root;
   }
 
@@ -111,7 +133,9 @@ void FIND(TreeNode *currentDir) {
 
   char *prefixStr = read_string();
   if (prefixStr[0] == '\0') {
+    red();
     printf("Error: No prefix string found\n");
+    reset();
     return ;
   }
   printf("The following files/folders in the current directory contain prefix "
@@ -153,7 +177,7 @@ relative path that starts with the name of the current directory\n");
 
   printf("quit\t\tTerminates the program\n");
   printf("\t\tUsage: quit\n\n");
-  
+
 }
 
 void QUIT(TreeNode *root, AliasTableStruct alias_table) {

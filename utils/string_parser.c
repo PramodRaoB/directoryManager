@@ -1,4 +1,5 @@
 #include "string_parser.h"
+#include "../include.h"
 #define ll long long
 
 // Memory optimisation while reading a character string
@@ -13,10 +14,12 @@ char *read_string(void) {
 
   arr = (char *)malloc(update * sizeof(char));
   // printf("Enter The Path: \n");
-  while ((ch = getc(stdin))!= '\n') {
+  while ((ch = getc(stdin)) != '\n') {
     // ch = getc(stdin);
     if (ch == ' ') {
-      printf("Path cannot contain spaces\n");
+      red();
+      printf("Error: Path cannot contain spaces\n");
+      reset();
       arr[0] = 0;
       return arr;
     }
@@ -32,11 +35,11 @@ char *read_string(void) {
   }
 
   if (len == 0) {
-    arr[len]='\0';
+    arr[len] = '\0';
     return arr;
   }
-  if (arr[len-1] == '/')
-    arr[len-1] = '\0';
+  if (arr[len - 1] == '/')
+    arr[len - 1] = '\0';
   else
     arr[len] = '\0';
 
@@ -75,7 +78,7 @@ int len_of_parser_func(char *path) {
       size++;
     }
   }
-  return size+1;
+  return size + 1;
 }
 
 // Parses the string taking / as a delimiter and stores all the directory names

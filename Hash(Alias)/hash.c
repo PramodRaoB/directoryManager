@@ -40,9 +40,13 @@ AliasTableStruct InsertPathQP(char curr_path[MAX_PATH_LENGTH],
 
   while (strcmp(qp[hash].path, "VALID") != 0) {
     if (strcmp(qp[hash].ali, curr_alias) == 0) {
-      printf("Alias already used.\n");
+      red();
+      printf("Error: Alias already used.\n");
+      reset();
       char ch, buff;
+      yellow();
       printf("Replace existing path with new path?(Y/N)\n");
+      reset();
       scanf("%c%c", &buff, &ch);
       if (ch == 'Y' || ch == 'y') {
         strcpy(qp[hash].path, curr_path);
@@ -51,8 +55,10 @@ AliasTableStruct InsertPathQP(char curr_path[MAX_PATH_LENGTH],
                qp[hash].path);
         return table;
       } else {
+        yellow();
         printf(
-            "Would you like to change the alias for the current path?(Y/N)\n");
+          "Would you like to change the alias for the current path?(Y/N)\n");
+        reset();
         char d, buff2;
         scanf("%c%c", &buff2, &d);
         if (d == 'Y' || d == 'y') {
@@ -119,7 +125,9 @@ char *FindAlias(char *alias, AliasTableStruct table) {
   If there is no path corresponding to the given alias, the function returns
   INVALID
   */
+  red();
   printf("Error: No such alias exists\n");
+  reset();
   return NULL;
 }
 

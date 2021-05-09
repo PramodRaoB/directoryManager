@@ -2,6 +2,8 @@
 #include "include.h"
 
 int main() {
+  printf("\x1b[2J\x1b[1;1H");
+  fflush(stdout);
   TreeNode *root = init_tree();
   AliasTableStruct alias_table = CreateHash(INITIAL_TABLE_SIZE);
   char command[15];
@@ -42,8 +44,14 @@ int main() {
     } else if (!strcasecmp(command, "quit")) {
       printf("Program is ending *sad windows xp noises*\n");
       QUIT(root, alias_table);
-    } else
-      printf("Invalid command, try again. Type \"help\" for help\n");
+    } else {
+      red();
+      printf("Error: Invalid command, try again.\n");
+      reset();
+      printf("Type \"help\" for help\n");
+    }
   }
+  printf("\x1b[2J\x1b[1;1H");
+  fflush(stdout);
   return 0;
 }

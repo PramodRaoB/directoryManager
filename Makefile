@@ -21,7 +21,7 @@ output=main.out
 
 compile:
 	@echo "Building code."
-	$(CC) -o output **/*.c *.c
+	$(CC) -o $(output) **/*.c *.c
 
 run:
 	./$(output)
