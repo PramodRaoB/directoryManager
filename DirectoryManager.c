@@ -90,9 +90,15 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
 
 void FIND(TreeNode *currentDir) {
   //printf("Enter prefix string: ");
+
   char *prefixStr = read_string();
+  if(prefixStr[0]=='\0')
+  {
+    printf("Error: No prefix string found\n");
+    return ;
+  }
   printf("The following files/folders in the current directory contain prefix "
-         "%s:\n",
+         "%s:\n\n",
          prefixStr);
   printTrieWithPrefix(currentDir->childTrie, prefixStr);
   free(prefixStr);
