@@ -19,7 +19,7 @@ void ADD(TreeNode *currentDir);
  * given It scans for a path input returns pointer to the end of path if valid
  * Else returns root
  * */
-TreeNode *MOVE(TreeNode *root);
+TreeNode *MOVE(TreeNode *root, TreeNode *current);
 
 /*
  * ALIAS function takes in the Alias table and root of the tree.

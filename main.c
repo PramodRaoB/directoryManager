@@ -16,7 +16,7 @@ void main() {
     scanf("%s", command);
 
     if (!strcasecmp(command, "move")) {
-      current = MOVE(root);
+      current = MOVE(root, current);
       continue;
     } else if (!strcasecmp(command, "add")) {
       ADD(current);
@@ -37,7 +37,7 @@ void main() {
       HELP();
       continue;
     } else if(!strcasecmp(command, "cd")) {
-      current = MOVE(current);
+      current = MOVE(current, current);
       continue;
     } else if (!strcasecmp(command, "quit")) {
       printf("Program is ending *sad windows xp noises*\n");
