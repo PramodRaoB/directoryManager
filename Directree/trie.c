@@ -97,3 +97,11 @@ void printTrieWithPrefix(Trie T, char *str) {
   free(s->arr);
   free(s);
 }
+
+void deleteTrie(Trie T) {
+  for (int i = 0; i < 26; i++) {
+    if (T->children[i] != NULL)
+      deleteTrie(T->children[i]);
+  }
+  free(T);
+}

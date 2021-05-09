@@ -26,4 +26,6 @@ bool trieSearch(Trie T, const char *str);
 void printTrie(Trie T);
 void printTrieWithPrefix(Trie T, char *str);
 
+void deleteTrie(Trie T);
+
 #endif
