@@ -46,7 +46,7 @@ TreeNode *MOVE(TreeNode *root, TreeNode *current) {
   }
   temp = traversal(input_string, root);
   free(input_string);
-  
+
   /*error*/
   /*Returning NULL if path is wrong*/
   if (temp == NULL) {
@@ -81,7 +81,7 @@ AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root) {
   } else if (Node != NULL) {
     printf("Error: %s is a file\n", Node->file->name);
   } else
-    printf("Error: Invalid Path");
+    printf("Error: Invalid Path\n");
 
   return table;
 }
@@ -125,19 +125,19 @@ void HELP() {
   printf("\nList of available commands and basic usage:\n\n");
   printf("add\t\tAdd file/directory inside current directory (only lowercase names)\n");
   printf("\t\tUsage: add <name> <type>\n\n");
-  printf("\t\tExamples: 'add foo folder', 'add bar file'");
+  printf("\t\tExamples: 'add foo folder', 'add bar file'\n");
   printf("move\t\tChange current directory to any directory by taking input the complete path to that directory\n");
   printf("\t\tUsage: move <path>\n\n");
-  printf("\t\tExample: 'move root/foo'");
+  printf("\t\tExample: 'move root/foo'\n");
   printf("alias\t\tTakes input the complete path to that directory and the alias\n");
   printf("\t\tUsage: alias <path> <aliasforpath>\n\n");
-  printf("\t\tExample: 'alias root/foo hello");
+  printf("\t\tExample: 'alias root/foo hello\n");
   printf("teleport\tChange the current directory to any directory by taking input the alias of that directory\n");
   printf("\t\tUsage: teleport <aliasforpath>\n\n");
-  printf("\t\tExample:(from the alias example) 'teleport hello'");
+  printf("\t\tExample:(from the alias example) 'teleport hello'\n");
   printf("find\t\tSearch for all the files/directories with given prefix inside current directory\n");
   printf("\t\tUsage: find <prefix>\n\n");
-  printf("\t\tExample: 'find f' in root prints foo");
+  printf("\t\tExample: 'find f' in root prints foo\n");
   printf("ls\t\tPrints all the files/folders in the current directory\n");
   printf("\t\tUsage: ls\n\n");
   printf("cd\t\tChange current directory to any directory inside the current directory by taking input the\n\t\t\
