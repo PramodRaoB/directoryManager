@@ -1,16 +1,19 @@
 #include "DirectoryManager.h"
 
+void STARTUP(){
+
+}
 void ADD(TreeNode *currentDir) {
   char fileName[MAX_NAME_LENGTH];
   char typeChoice[10];
   bool isFile;
   scanf("%s %s", fileName, typeChoice);
-  if (strcmp(typeChoice, "FILE") == 0)
+  if (strcasecmp(typeChoice, "FILE") == 0)
     isFile = true;
-  else if (strcmp(typeChoice, "FOLDER") == 0)
+  else if (strcasecmp(typeChoice, "FOLDER") == 0)
     isFile = false;
   else {
-    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\n");
+    printf("Error: Invalid type\n(Valid types: \"FILE\", \"FOLDER\")\nNote: File/Folder name cannot contain spaces.");
     return;
   }
   add_node(currentDir, fileName, isFile);
@@ -21,14 +24,17 @@ TreeNode *MOVE(TreeNode *root) {
   TreeNode *current;
 
   input_string = read_string();
-
+  if(input_string[0] == 0){
+    printf("Error: Invalid path1\n\n");
+    return root;
+  }
   current = traversal(input_string, root);
 
   /*error*/
   /*Returning NULL if path is wrong*/
   if (current == NULL) {
     // no changes to the input root
-    printf("Error: Invalid path\n\n");
+    printf("Error: Invalid path2\n\n");
     return root;
   }
 
@@ -39,34 +45,28 @@ TreeNode *MOVE(TreeNode *root) {
     return root;
   }
 
+  printf("Move successful\n");
   return current;
 }
 
-void ALIAS(AliasTableStruct table, TreeNode *root) {
+AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root) {
   char path[MAX_PATH_LENGTH];
   char alias[MAX_ALIAS_LENGTH];
   scanf("%s %s", path, alias);
   TreeNode *Node;
   Node = traversal(path, root);
 
+  // printf("booo");
   if (Node != NULL && Node->file->is_file != 1) {
 
     table = InsertPathQP(path, alias, table);
-    /*
-    if (Node->file->is_file)
-    {
-      printf("Note: %s is a file\n", Node->file->name);
-    }
-    else
-    {
-      printf("Note: %s is a directory\n", Node->file->name);
-    }
-    */
-    return;
+    return table;
   } else if (Node != NULL) {
     printf("Error: %s is a file\n", Node->file->name);
   } else
     printf("Error: Invalid Path");
+
+  return table;
 }
 
 TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
@@ -100,4 +100,10 @@ void FIND(TreeNode *currentDir) {
 
 void HELP() {}
 
-void QUIT() {}
+void QUIT(TreeNode* root, AliasTableStruct alias_table) {
+  delete_tree(root);
+  DeleteAliasTable(alias_table);
+
+  exit(0);
+
+}

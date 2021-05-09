@@ -57,7 +57,7 @@ void rehashTable(HashTable *ht) {
   free(oldTable);
 }
 
-void insertIntoTable(HashTable *ht, TreeNode *x) {
+int insertIntoTable(HashTable *ht, TreeNode *x) {
   if (ht->tableSize <= ht->filledSize * 2) {
     rehashTable(ht);
   }
@@ -66,10 +66,16 @@ void insertIntoTable(HashTable *ht, TreeNode *x) {
   int offset = 0;
   int toAdd = 1;
   while (ht->table[(newHash + offset) % ht->tableSize] != NULL) {
+    char *potential =
+        ht->table[(newHash + offset) % ht->tableSize]->file->name;
+    if (strcmp(potential, x->file->name) == 0) {
+      return 0;   // Nothing was inserted
+    }
     offset += toAdd;
     toAdd += 2;
   }
   ht->table[(newHash + offset) % ht->tableSize] = x;
+  return 1; // 1 element was inserted
 }
 
 TreeNode *findInTable(HashTable *ht, char *nodeName) {

@@ -6,6 +6,7 @@ AliasTableStruct CreateHash(llu size) {
 
   table = (AliasTableStruct)malloc(sizeof(struct stHT_alias));
   table->table_size = size;
+  table->num_elems = 0;
   table->start = (Alias *)malloc(size * sizeof(Alias));
 
   for (llu i = 0; i < size; i++) {

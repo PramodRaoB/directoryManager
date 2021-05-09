@@ -10,6 +10,11 @@
 #include "NodeElement.h"
 
 /*
+ * Creates an empty directree with one node named "root"
+ * */
+TreeNode *init_tree();
+
+/*
  * Inputs: File name, isFIle, address of the parent node
  * mallocs and initialises all properties of the node
  * returns pointer to the created node
@@ -45,6 +50,16 @@ TreeNode *traversal(char *path, TreeNode *root);
  * Returns number of files in the directory
  * */
 int print_contents(TreeNode *current);
+
+/*
+ * Takes current node and returns full path to it
+ * */
+char* get_path(TreeNode* current);
+
+/*
+ * Gets path by calling get_path and prints path to current node
+ * */
+void print_current_path(TreeNode* current);
 
 /*
  * Takes in pointer to the root node and deletes the whole tree after

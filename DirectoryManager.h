@@ -27,7 +27,7 @@ TreeNode *MOVE(TreeNode *root);
  * using traversal function. Insert the path and the alias in the Alias
  * Hashtable.
  * */
-void ALIAS(AliasTableStruct table, TreeNode *root);
+AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root);
 
 TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root);
 

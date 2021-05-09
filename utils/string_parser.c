@@ -8,13 +8,18 @@ char *read_string(void) {
   char *arr;
   int len = 0;
   int update = 16;
-  char ch = '0';
+  char ch = getc(stdin);
   int size = 0;
 
   arr = (char *)malloc(update * sizeof(char));
   // printf("Enter The Path: \n");
   while (ch != '\n') {
     ch = getc(stdin);
+    if(ch == ' '){
+      printf("Path cannot contain spaces\n");
+      arr[0] = 0;
+      return arr;
+    }
     size++;
     if (size == update) {
       update *= 2;
@@ -26,7 +31,7 @@ char *read_string(void) {
     len++;
   }
 
-  arr[len] = '\0';
+  arr[len-1] = '\0';
   return arr;
 }
 
