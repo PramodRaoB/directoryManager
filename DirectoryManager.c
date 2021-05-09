@@ -1,11 +1,28 @@
 #include "DirectoryManager.h"
 
-void STARTUP() {}
+void STARTUP() {
+  printf("==============================================================\n");
+  printf("\t\tDirectory management program\n");
+  printf("Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
+  printf("Enter 'help' for a full list of commands and usage\n");
+  printf("Enter 'quit' to terminate the program\n");
+  printf("==============================================================\n");
+}
+
 void ADD(TreeNode *currentDir) {
   char fileName[MAX_NAME_LENGTH];
   char typeChoice[10];
   bool isFile;
   scanf("%s %s", fileName, typeChoice);
+  
+  int name_size = strlen(fileName);
+  for(int i = 0;i < name_size; i++){
+    if(fileName[i] < 'a' || fileName[i] > 'z'){
+      printf("Error: Name expected in all lowercase\n");
+      printf("Nothing was added\n");
+      return;
+    }
+  }
   if (strcasecmp(typeChoice, "FILE") == 0)
     isFile = true;
   else if (strcasecmp(typeChoice, "FOLDER") == 0)

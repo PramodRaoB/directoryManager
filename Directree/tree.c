@@ -119,6 +119,7 @@ int print_contents(TreeNode *current) {
   TreeNode *temp = current->first_child;
   int count = 0;
 
+  printf("\n");
   while (temp) {
     count++;
     // printf("%d. ", count);

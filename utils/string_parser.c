@@ -9,10 +9,6 @@ char *read_string(void) {
   int len = 0;
   int update = 16;
   char ch = getc(stdin);
-  if(ch=='\n')
-  {
-
-  }
   int size = 0;
 
   arr = (char *)malloc(update * sizeof(char));
@@ -57,7 +53,7 @@ int *parser_func(char *path) {
   int size = 0;
   for (int i = 0; i < len; i++) {
     // ASCII Value of / is 47
-    if ((int)path[i] == 47) {
+    if ((int)path[i] == '/') {
       indices[size++] = i;
       if (size == upd) {
         upd *= 2;
