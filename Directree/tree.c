@@ -84,7 +84,7 @@ TreeNode *traversal(char *path, TreeNode *root) {
   char **finalarray;
   finalarray = String_Parser(path);
   TreeNode *temp = NULL;
-  int length = len_of_parser_func(path) + 1;
+  int length = len_of_parser_func(path);
   if (is_Correct_Path(path, finalarray)) {
     for (int i = 0; i < length; i++) {
       free(finalarray[i]);
