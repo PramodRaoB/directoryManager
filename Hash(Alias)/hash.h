@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define INITIAL_TABLE_SIZE 16
+#define INITIAL_TABLE_SIZE 109
 #define MAX_PATH_LENGTH 1001
 #define MAX_ALIAS_LENGTH 100
 #define MAX_NAME_LENGTH 100
