@@ -18,34 +18,34 @@ void ADD(TreeNode *currentDir) {
   add_node(currentDir, fileName, isFile);
 }
 
-TreeNode *MOVE(TreeNode *root) {
+TreeNode *MOVE(TreeNode *root, TreeNode *current) {
   char *input_string;
-  TreeNode *current;
+  TreeNode *temp;
 
   input_string = read_string();
   if (input_string[0] == 0) {
     printf("Error: Invalid path\n\n");
-    return root;
+    return current;
   }
-  current = traversal(input_string, root);
+  temp = traversal(input_string, root);
   free(input_string);
   /*error*/
   /*Returning NULL if path is wrong*/
-  if (current == NULL) {
+  if (temp == NULL) {
     // no changes to the input root
     printf("Error: Invalid path\n\n");
-    return root;
+    return current;
   }
 
   /*The given path leads to a file*/
-  if (current->file->is_file) {
+  if (temp->file->is_file) {
     // no changes to the input root
     printf("Error: Given path leads to a file, move was unsuccessful\n");
-    return root;
+    return current;
   }
 
   // printf("Move successful\n");
-  return current;
+  return temp;
 }
 
 AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root) {
