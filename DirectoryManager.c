@@ -104,7 +104,25 @@ void FIND(TreeNode *currentDir) {
   free(prefixStr);
 }
 
-void HELP() {}
+void HELP() {
+  printf("\nAvailable commands:\n\n");
+  printf("add\t\tAdd file/directory inside current directory\n");
+  printf("\t\tadd _name _type\n\n");
+  printf("move\t\tChange current directory to any directory by taking input the complete path to that directory\n");
+  printf("\t\tmove _path\n\n");
+  printf("alias\t\tTakes input the complete path to that directory and the alias\n");
+  printf("\t\talias _path _aliasforpath\n\n");
+  printf("teleport\tChange the current directory to any directory by taking input the alias of that directory\n");
+  printf("\t\tteleport _aliasforpath\n\n");
+  printf("find\t\tSearch for all the files/directories with given prefix inside current directory\n");
+  printf("\t\tfind _prefix\n\n");
+  printf("ls\t\tPrints all the files/folders in the current directory\n");
+  printf("\t\tls\n\n");
+  printf("cd\t\tChange current directory to any directory inside the current directory by taking input the relative path to that directory from the\n\t\tcurrent directory\n");
+  printf("\t\tcd _path\n\n");
+  printf("quit\t\tTerminates the program\n");
+  printf("\t\tquit\n\n");
+}
 
 void QUIT(TreeNode *root, AliasTableStruct alias_table) {
   delete_tree(root);
