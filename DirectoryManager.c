@@ -123,28 +123,37 @@ void FIND(TreeNode *currentDir) {
 
 void HELP() {
   printf("\nList of available commands and basic usage:\n\n");
+
   printf("add\t\tAdd file/directory inside current directory (only lowercase names)\n");
-  printf("\t\tUsage: add <name> <type>\n\n");
-  printf("\t\tExamples: 'add foo folder', 'add bar file'\n");
+  printf("\t\tUsage: add <name> <type>\n");
+  printf("\t\tExamples: 'add foo folder', 'add bar file'\n\n");
+
   printf("move\t\tChange current directory to any directory by taking input the complete path to that directory\n");
-  printf("\t\tUsage: move <path>\n\n");
-  printf("\t\tExample: 'move root/foo'\n");
+  printf("\t\tUsage: move <path>\n");
+  printf("\t\tExample: 'move root/foo'\n\n");
+
   printf("alias\t\tTakes input the complete path to that directory and the alias\n");
-  printf("\t\tUsage: alias <path> <aliasforpath>\n\n");
-  printf("\t\tExample: 'alias root/foo hello\n");
+  printf("\t\tUsage: alias <path> <aliasforpath>\n");
+  printf("\t\tExample: 'alias root/foo hello\n\n");
+
   printf("teleport\tChange the current directory to any directory by taking input the alias of that directory\n");
-  printf("\t\tUsage: teleport <aliasforpath>\n\n");
-  printf("\t\tExample:(from the alias example) 'teleport hello'\n");
+  printf("\t\tUsage: teleport <aliasforpath>\n");
+  printf("\t\tExample:(from the alias example) 'teleport hello'\n\n");
+
   printf("find\t\tSearch for all the files/directories with given prefix inside current directory\n");
-  printf("\t\tUsage: find <prefix>\n\n");
-  printf("\t\tExample: 'find f' in root prints foo\n");
+  printf("\t\tUsage: find <prefix>\n");
+  printf("\t\tExample: 'find f' in root prints foo\n\n");
+
   printf("ls\t\tPrints all the files/folders in the current directory\n");
   printf("\t\tUsage: ls\n\n");
+
   printf("cd\t\tChange current directory to any directory inside the current directory by taking input the\n\t\t\
 relative path that starts with the name of the current directory\n");
   printf("\t\tUsage: cd <path>\n\n");
+
   printf("quit\t\tTerminates the program\n");
   printf("\t\tUsage: quit\n\n");
+  
 }
 
 void QUIT(TreeNode *root, AliasTableStruct alias_table) {
