@@ -8,7 +8,7 @@ void STARTUP() {
     purple();
     printf("\t\t                        Directory Management Program               \n\n");
     blue();
-    printf("\t\t\t        Features: ADD, MOVE, ALIAS, TELEPORT, FIND               \n");
+    printf("\t\t\t        Features: ADD, MOVE, ALIAS, TELEPORT, FIND, TREE              \n");
     printf("\t\t\t        Enter 'help' for commands and usage                      \n");
     printf("\t\t\t        Enter 'quit' to terminate the program                    \n\n");
     printf("\t\t      _____________________________________________________________\n\n");
@@ -182,6 +182,9 @@ void HELP() {
     printf("cd\t\tChange current directory to any directory inside the current directory by taking input the\n\t\t\
 relative path that starts with the name of the current directory\n");
     printf("\t\tUsage: cd <path>\n\n");
+
+    printf("tree\t\tPrints all files and folders under current directory as a tree\n");
+    printf("\t\tUsage: tree\n");
 
     printf("quit\t\tTerminates the program\n");
     printf("\t\tUsage: quit\n\n");
