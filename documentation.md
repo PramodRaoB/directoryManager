@@ -3,145 +3,145 @@
 
 To setup the program on your desktop, do the following.
 
-	`git clone [https://github.com/PramodRaoB/directoryManager](https://github.com/PramodRaoB/directoryManager)`
+`git clone [https://github.com/PramodRaoB/directoryManager](https://github.com/PramodRaoB/directoryManager)`
 
-	            In the directory of your choice.
+In the directory of your choice.
 
 # Usage
 
-	            In the local repository, just type the following into the console
+        In the local repository, just type the following into the console
 
-	            `make`
+        `make`
 
-	            make runs the Makefile which contains the instructions to compile and run the program.
+        make runs the Makefile which contains the instructions to compile and run the program.
 
-	            Note: The Makefile assumes the compiler to be `gcc`
+        Note: The Makefile assumes the compiler to be `gcc`
 
-	            For clang users, use `make clang`
+        For clang users, use `make clang`
 
 # Features
 
-	            1. Add a file in the current directory using the `add` function
-	            2. Move to any directory using `move`.
-	            3. Save path to directory using `alias`.
-	            4. Move to any directory using `teleport`by providing alias of the path.
-	            5. `find`allows you to search through the current directory with a specified prefix
-	            6. Exit the program using `quit`
-	            7. Display contents of current directory using `ls`.
-	            8. Use `cd` to move to directory of choice from the current directory.
-	            9. Use `help` to learn more about the usage.
+1. Add a file in the current directory using the `add` function
+2. Move to any directory using `move`.
+3. Save path to directory using `alias`.
+4. Move to any directory using `teleport`by providing alias of the path.
+5. `find`allows you to search through the current directory with a specified prefix
+6. Exit the program using `quit`
+7. Display contents of current directory using `ls`.
+8. Use `cd` to move to directory of choice from the current directory.
+            9. Use `help` to learn more about the usage.
 
 # Repository Contents
 
-	            ```bash
+```bash
 
-	            ├── DirectoryManager.c
-	            ├── DirectoryManager.h
-	            ├── Directree
-	            │   ├── NodeElement.h
-	            │   ├── hashChild.c
-	            │   ├── hashChild.h
-	            │   ├── tree.c
-	            │   ├── tree.h
-	            │   ├── trie.c
-	            │   └── trie.h
-	            ├── Hash(Alias)
-	            │   ├── hash.c
-	            │   └── hash.h
-	            ├── Makefile
-	            ├── README.md
-	            ├── a.out
-	            ├── changelog.md
-	            ├── design.sh
-	            ├── documentation.md
-	            ├── include.h
-	            ├── main.c
-	            ├── main.out
-	            └── utils
-	            ├── colors.c
-	            ├── colors.h
-	            ├── design.sh
-	            ├── stack.c
-	            ├── stack.h
-	            ├── string_parser.c
-	            ├── string_parser.h
-	            ├── utils.c
-	            └── utils.h
-	            ```
+├── DirectoryManager.c
+├── DirectoryManager.h
+├── Directree
+│   ├── NodeElement.h
+│   ├── hashChild.c
+│   ├── hashChild.h
+│   ├── tree.c
+│   ├── tree.h
+│   ├── trie.c
+│   └── trie.h
+├── Hash(Alias)
+│   ├── hash.c
+│   └── hash.h
+├── Makefile
+├── README.md
+├── a.out
+├── changelog.md
+├── design.sh
+├── documentation.md
+├── include.h
+├── main.c
+├── main.out
+└── utils
+├── colors.c
+├── colors.h
+├── design.sh
+├── stack.c
+├── stack.h
+├── string_parser.c
+├── string_parser.h
+├── utils.c
+└── utils.h
+```
 
 # Contribution
 
 ### Pramod Rao Budramane
 
-	            - Trie Implementation
-	            - Hashtable for child nodes, prime functions
-	            - Maintaining repository
+- Trie Implementation
+- Hashtable for child nodes, prime functions
+- Maintaining repository
 	            - Program Quality Testing
 
 ### Soveet Kumar Nayak
 
-	            - Driver functions
-	            - Aliases, hashing for it, and rehashing
-	            - Teleport function, and traversal
-	            - Quality Control, Help function
+- Driver functions
+- Aliases, hashing for it, and rehashing
+- Teleport function, and traversal
+- Quality Control, Help function
 
 ### Srikar Bhavesh Desu
 
-	            - String Parser
-	            - Aliases, Hashing
-	            - Finding in Alias table
-	            - Program testing and bug fixes
+- String Parser
+- Aliases, Hashing
+- Finding in Alias table
+- Program testing and bug fixes
 
 ### Tejah S.S.
 
-	            - Tree Structure
-	            - Move function, main functions
-	            - Improvement in functions, primary bug fixing, error fixtures
-	            - Comments and code readability, Makefile, Formatting, Code Maintenance, Named the repository
+- Tree Structure
+- Move function, main functions
+- Improvement in functions, primary bug fixing, error fixtures
+- Comments and code readability, Makefile, Formatting, Code Maintenance, Named the repository
 
 ### Varshita Kolipaka
 
-	            - Tree Structure, Improved Alias Function
-	            - Commented Code, Test code for bugs, Makefile, Made styling consistent
-	            - Frontend Interface and design, Code Documentation, README, cleaned
-	            - Code Maintenance
+- Tree Structure, Improved Alias Function
+- Commented Code, Test code for bugs, Makefile, Made styling consistent
+- Frontend Interface and design, Code Documentation, README, cleaned
+- Code Maintenance
 
 # Data structures Used
 
-	            We have used a combination of Linked List trees, Hashtables, and tries to optimise the time complexity.
+We have used a combination of Linked List trees, Hashtables, and tries to optimise the time complexity.
 
-	            We have used $2$ Hashtables, One that contains the aliases to the absolute paths and the other which contains pointers to nodes in the tree. The former hashtable is a struct of alias and absolute path, and when the `alias` command is used, the alias is updated and during `teleport` , the alias is checked against the paths stored. The latter hashtable is used to speed up the lookup as it returns a pointer to the required node (here, a file / folder) in $O(1)$ as opposed to a $O(N)$ lookup in a traditional tree structure. .
+We have used $2$ Hashtables, One that contains the aliases to the absolute paths and the other which contains pointers to nodes in the tree. The former hashtable is a struct of alias and absolute path, and when the `alias` command is used, the alias is updated and during `teleport` , the alias is checked against the paths stored. The latter hashtable is used to speed up the lookup as it returns a pointer to the required node (here, a file / folder) in $O(1)$ as opposed to a $O(N)$ lookup in a traditional tree structure. .
 
-	            We have used a tree AND a hashtable. A hashtable alone will not allow us to print contents of the directory optimally. A tree structure enables us to go through the files / directories under current folder, both faster and more systematically.
+We have used a tree AND a hashtable. A hashtable alone will not allow us to print contents of the directory optimally. A tree structure enables us to go through the files / directories under current folder, both faster and more systematically.
 
-	            For the `find` function, we have used a Trie. This enables us to lookup All files and folders with a specified prefix in a complexity of O(Length of word + Number of words with same prefix). The complexity of creating a trie is O(W * L) , where W is the number of words, and L is an average length of the word. `O(length of prefix + sum of lengths of all words with the given prefix)`.
-	            The insertion is of the complexity `O(length of word)`
+For the `find` function, we have used a Trie. This enables us to lookup All files and folders with a specified prefix in a complexity of O(Length of word + Number of words with same prefix). The complexity of creating a trie is O(W * L) , where W is the number of words, and L is an average length of the word. `O(length of prefix + sum of lengths of all words with the given prefix)`.
+The insertion is of the complexity `O(length of word)`
 
 # Primary Functions
 
-	            -- -
+-- -
 
 ## `ADD(...)`
 
-	            ```c
-	            void ADD(TreeNode * currentDir);
-	            ```
+	```c
+	void ADD(TreeNode * currentDir);
+	```
 
-	            **INPUT:** Pointer to current directory
+	**INPUT:** Pointer to current directory
 
-	            **WORKING:**
+	**WORKING:**
 
-	            -Scans for `Name` and `FileType` where latter determines whether the token entered is a file or a directory.
+	-Scans for `Name` and `FileType` where latter determines whether the token entered is a file or a directory.
 
-	            - Calls `add_node()` to add node to current directory.
+	- Calls `add_node()` to add node to current directory.
 
-	            **RETURN VALUE :** NONE
+	**RETURN VALUE :** NONE
 
-	            **TIME COMPLEXITY :** Depends on `add_node(...)` (Explained Later)
+	**TIME COMPLEXITY :** Depends on `add_node(...)` (Explained Later)
 
-	            **DATA STRUCTURES :** Linked List Tree, Hashtable, Trie
+	**DATA STRUCTURES :** Linked List Tree, Hashtable, Trie
 
-	            -- -
+-- -
 
 ## `MOVE(...)`
 
