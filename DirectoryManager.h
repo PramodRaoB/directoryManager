@@ -46,15 +46,14 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root, TreeNode *current);
 void FIND(TreeNode *currentDir);
 
 /*
- * Prints a help message containing a short description of the cli commands,
- * their usage and examples
- * */
-
-/*
  * Prints the tree from the given node in an aesthetically pleasing way
  * */
 void TREE(TreeNode *current);
 
+/*
+ * Prints a help message containing a short description of the cli commands,
+ * their usage and examples
+ * */
 void HELP();
 
 /*
