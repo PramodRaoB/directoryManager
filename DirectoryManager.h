@@ -51,7 +51,7 @@ void FIND(TreeNode *currentDir);
  * */
 
 /*
- * Prints the tree from the given node in an aesthetically pleasing way
+ * Prints the tree from the given node in an aesthetically pleasing way.
  * */
 void TREE(TreeNode *current);
 

@@ -230,9 +230,14 @@ void delete_tree(TreeNode *root) {
 }
 
 void dfsTree(TreeNode *curr, int numSpaces) {
+    //print spaces first
     for (int i = 0; i < numSpaces; i++) printf(" ");
+
+    //print current node
     printf("|_____ %s\n", curr->file->name);
     TreeNode* temp = curr->first_child;
+
+    //recurse on children
     while (temp) {
         dfsTree(temp, numSpaces + 5);
         temp = temp->next;

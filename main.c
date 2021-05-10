@@ -2,6 +2,7 @@
 #include "include.h"
 #include <string.h>
 
+
 int main() {
   printf("\x1b[2J\x1b[1;1H");
   TreeNode *root = init_tree();
