@@ -2,7 +2,7 @@
 
 ## Repo for the DSA Mini-project Directory Manager
 
-## Getting files
+## Installation and Setup 
 
 To setup the program on your desktop, do the following.
 

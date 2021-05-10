@@ -9,15 +9,15 @@ In the directory of your choice.
 
 # Usage
 
-        In the local repository, just type the following into the console
+In the local repository, just type the following into the console
 
-        `make`
+`make`
 
-        make runs the Makefile which contains the instructions to compile and run the program.
+make runs the Makefile which contains the instructions to compile and run the program.
 
-        Note: The Makefile assumes the compiler to be `gcc`
+Note: The Makefile assumes the compiler to be `gcc`
 
-        For clang users, use `make clang`
+For clang users, use `make clang`
 
 # Features
 
