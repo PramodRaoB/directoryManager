@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <wchar.h>
+#include <locale.h>
 
 #include "Directree/NodeElement.h"
 #include "Directree/hashChild.h"

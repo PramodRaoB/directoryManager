@@ -1,9 +1,10 @@
-#include "tree.h"
-#include "../utils/string_parser.h"
-#include "hashChild.h"
-#include "trie.h"
-#include"../utils/colors.h"
-
+// #include "tree.h"
+// #include "../utils/string_parser.h"
+// #include "hashChild.h"
+// #include "trie.h"
+// #include"../utils/colors.h"
+#include "../DirectoryManager.h"
+#include "../include.h"
 #define ll long long int
 
 TreeNode *init_tree() {
@@ -131,11 +132,13 @@ int print_contents(TreeNode *current) {
     // count++;
     if (temp->file->is_file) {
       blue();
-      printf("|_File:  \t");
+      RIGHTARROW();
+      printf("(File)  \t");
       reset();
     } else {
       green();
-      printf("|_Folder:\t");
+      RIGHTARROW();
+      printf("(Folder)\t");
       reset();
     }
 

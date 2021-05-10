@@ -13,6 +13,7 @@ Repo for the DSA Mini-project Directory Manager
 - [X] Use hashing for O(1) finding of children
 - [X] Implement hashing based traversal
 - [X] Better find function (possibly trie based)
+- [X] Add `cd` relative path functionality
 
 ### Styling
 

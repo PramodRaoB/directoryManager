@@ -1,3 +1,4 @@
+#!bin/bash
 # Makefile for the directory manager repo
 # Instructions to use: 
 # 1. Type `make compile` on the terminal to compile
@@ -18,9 +19,15 @@ HASH="Hash(Alias)"
 file=main.c
 output=main.out
 
+default:
+	$(CC) -o $(output) **/*.c *.c
+	./$(output)
+	clear
+	
+
 
 compile:
-	@echo "Building code."
+# 	@echo "Building code."
 	$(CC) -o $(output) **/*.c *.c
 
 run:

@@ -55,5 +55,7 @@ void HELP();
  * Frees all remaining heap blocks and exits the program
  * */
 void QUIT(TreeNode *root, AliasTableStruct alias_table);
-
+void HEAVYRIGHT();
+void RIGHTARROW();
+void DESIGN();
 #endif
