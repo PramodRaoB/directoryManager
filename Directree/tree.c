@@ -235,9 +235,9 @@ void dfsTree(TreeNode *curr, int numSpaces) {
 
     //print current node
     printf("|_____ %s\n", curr->file->name);
-    TreeNode* temp = curr->first_child;
 
     //recurse on children
+    TreeNode* temp = curr->first_child;
     while (temp) {
         dfsTree(temp, numSpaces + 5);
         temp = temp->next;

@@ -150,7 +150,6 @@ void FIND(TreeNode *currentDir) {
 }
 
 void TREE(TreeNode *current) {
-    //print tree from current
     dfsTree(current, 0);
 }
 
