@@ -107,12 +107,12 @@ AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root) {
     return table;
 }
 
-TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root, TreeNode *present) {
     char alias[MAX_ALIAS_LENGTH];
     scanf("%s", alias);
     char *path = FindAlias(alias, table);
     //changed here to resolve seg fault when non existing directory
-    if (!path)return root;
+    if (!path)return present;
     TreeNode *current;
 
     current = traversal(path, root);

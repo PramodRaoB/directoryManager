@@ -35,7 +35,7 @@ AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root);
  * It scans for the alias and moves the root to the location
  * pointed by the alias
  * */
-TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root);
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root, TreeNode* current);
 
 /*
  * Takes the pointer to current directory

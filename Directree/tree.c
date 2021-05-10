@@ -175,7 +175,8 @@ char *get_path(TreeNode *current) {
 
     for (int j = i - 1; j >= 0; j--) {
         k = 0, c = '0';
-        while (c = names[j][k]) {
+        while (names[j][k]) {
+            c = names[j][k];
             path[x] = c;
             k++;
             x++;

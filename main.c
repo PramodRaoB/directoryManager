@@ -26,7 +26,7 @@ int main() {
       alias_table = ALIAS(alias_table, root);
       continue;
     } else if (!strcasecmp(command, "teleport")) {
-      current = TELEPORT(alias_table, root);
+      current = TELEPORT(alias_table, root, current);
       continue;
     } else if (!strcasecmp(command, "find")) {
       FIND(current);
@@ -48,8 +48,8 @@ int main() {
       printf("Error: Invalid command, try again.\n");
       reset();
       printf("Type \"help\" for help\n");
+      continue;
     }
-    printf("\x1b[2J\x1b[1;1H");
 
 
   }
