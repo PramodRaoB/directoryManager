@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../include.h"
+
 
 #define INITIAL_TABLE_SIZE 109
 #define MAX_PATH_LENGTH 1001
@@ -19,16 +21,16 @@ typedef unsigned long long llu;
 
 /*Stores Hashtable size and alias pointer "start"*/
 struct stHT_alias {
-  llu table_size;
-  llu num_elems;
-  struct alias *start;
+	llu table_size;
+	llu num_elems;
+	struct alias *start;
 };
 
 /*Alias struct contains a string that stores the absolute path and the Alias,
  * another string*/
 struct alias {
-  char path[MAX_PATH_LENGTH];
-  char ali[MAX_ALIAS_LENGTH];
+	char path[MAX_PATH_LENGTH];
+	char ali[MAX_ALIAS_LENGTH];
 };
 
 /*Takes the path and the alias and puts them into a hashtable*/
@@ -48,6 +50,7 @@ llu HornerHash(char arr[MAX_ALIAS_LENGTH], llu size);
 /*Finds the path for a given alias*/
 char *FindAlias(char *alias, AliasTableStruct table);
 
+/*Deletes the Hashtable*/
 void DeleteAliasTable(AliasTableStruct table);
 
 #endif

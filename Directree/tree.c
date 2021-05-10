@@ -2,6 +2,7 @@
 #include "../utils/string_parser.h"
 #include "hashChild.h"
 #include "trie.h"
+#include"../utils/colors.h"
 
 #define ll long long int
 
@@ -69,8 +70,10 @@ void add_node(TreeNode *parent, char *name, bool is_file) {
   if (insertIntoTable(parent->ht, new_node))
     add_at_start(new_node, parent);
   else {
+    red();
     printf(
-        "File/folder with the given name already exists\nNothing was added\n");
+      "Error: File/folder with the given name already exists\nNothing was added\n");
+    reset();
     delete_tree(new_node);
   }
 }
@@ -106,7 +109,9 @@ TreeNode *traversal(char *path, TreeNode *root) {
       }
     }
   } else {
+    red();
     printf("Error: Incorrect root argument\n");
+    reset();
   }
   for (int i = 0; i < length; i++) {
     free(finalarray[i]);
@@ -119,15 +124,20 @@ int print_contents(TreeNode *current) {
   TreeNode *temp = current->first_child;
   int count = 0;
 
-  printf("\n");
+  printf("%s\n", current->file->name);
   while (temp) {
     count++;
     // printf("%d. ", count);
     // count++;
     if (temp->file->is_file) {
-      printf("File:\t");
-    } else
-      printf("Folder:\t");
+      blue();
+      printf("|_File:  \t");
+      reset();
+    } else {
+      green();
+      printf("|_Folder:\t");
+      reset();
+    }
 
     printf("%s\n", temp->file->name);
     temp = temp->next;
@@ -152,7 +162,7 @@ char *get_path(TreeNode *current) {
   strcpy(names[i], "root");
   i++;
 
-  char *path = malloc((i)*100 * sizeof(char) + 1);
+  char *path = malloc((i) * 100 * sizeof(char) + 1);
 
   for (int j = i - 1; j >= 0; j--) {
     k = 0, c = '0';
@@ -170,7 +180,9 @@ char *get_path(TreeNode *current) {
 
 void print_current_path(TreeNode *current) {
   char *path = get_path(current);
-  printf("%s: ", path);
+  purple();
+  printf("%s ", path);
+  reset();
   free(path);
 }
 
@@ -197,8 +209,8 @@ void delete_tree(TreeNode *root) {
     deleteTrie(root->childTrie);
   if (root->ht) {
     free(root->ht->table); // No need to free each element in the table array
-                           // since they are just the node in the tree and it is
-                           // freed anyway
+    // since they are just the node in the tree and it is
+    // freed anyway
     free(root->ht);
   }
   free(root);
