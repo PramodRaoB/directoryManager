@@ -49,7 +49,9 @@ int main() {
       reset();
       printf("Type \"help\" for help\n");
     }
+    printf("\x1b[2J\x1b[1;1H");
 
-    return 0;
+
   }
+  return 0;
 }

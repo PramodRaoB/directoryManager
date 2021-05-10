@@ -1,25 +1,15 @@
-// #include "DirectoryManager.h"
 #include"include.h"
 void STARTUP() {
 
     blue();
-    printf("\t\t     _____________________________________________________________\n");
+    printf("\t\t      _____________________________________________________________\n\n");
     purple();
-    printf("\t\t                      Directory Management Program               \n");
+    printf("\t\t                        Directory Management Program               \n\n");
     blue();
-    printf("\t\t      Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
-    printf("\t\t      Enter 'help' for a full list of commands and usage         \n");
-    printf("\t\t      Enter 'quit' to terminate the program                      \n");
-    printf("\t\t     _____________________________________________________________\n\n");
-    reset();
-
-    blue();
-    printf("______________________________________________________________\n");
-    printf("\t\tDirectory Management Program\n");
-    printf("Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
-    printf("Enter 'help' for a full list of commands and usage\n");
-    printf("Enter 'quit' to terminate the program\n");
-    printf("______________________________________________________________\n\n");
+    printf("\t\t\t        Features: ADD, MOVE, ALIAS, TELEPORT, FIND               \n");
+    printf("\t\t\t        Enter 'help' for commands and usage                      \n");
+    printf("\t\t\t        Enter 'quit' to terminate the program                    \n\n");
+    printf("\t\t      _____________________________________________________________\n\n");
     reset();
 
 }
@@ -63,7 +53,7 @@ TreeNode *MOVE(TreeNode *root, TreeNode *current) {
     input_string = read_string();
     if (input_string[0] == 0) {
         red();
-        printf("Error: Invalid path\n\n");
+        printf("Error: Invalid path\n");
         reset();
         return current;
     }
@@ -73,23 +63,22 @@ TreeNode *MOVE(TreeNode *root, TreeNode *current) {
     /*error*/
     /*Returning NULL if path is wrong*/
     if (temp == NULL) {
-        // no changes to the input root
+        /*no changes to the input root*/
         red();
-        printf("Error: Invalid path\n\n");
+        printf("Error: Invalid path\n");
         reset();
         return current;
     }
 
     /*The given path leads to a file*/
     if (temp->file->is_file) {
-        // no changes to the input root
+        /*no changes to the input root*/
         red();
         printf("Error: Given path leads to a file, move was unsuccessful\n");
         reset();
         return current;
     }
 
-    // printf("Move successful\n");
     return temp;
 }
 
@@ -152,7 +141,7 @@ void FIND(TreeNode *currentDir) {
         return ;
     }
     printf("The following files/folders in the current directory contain prefix "
-           "%s:\n\n",
+           "%s:\n",
            prefixStr);
     printTrieWithPrefix(currentDir->childTrie, prefixStr);
     free(prefixStr);
