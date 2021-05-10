@@ -48,7 +48,11 @@ int main() {
       red();
       printf("Error: Invalid command, try again.\n");
       reset();
-      printf("Type \"help\" for help\n");
+      printf("Type \"");
+      green();
+      printf("help");
+      reset();
+      printf("\" for help\n");
     }
   }
   printf("\x1b[2J\x1b[1;1H");
