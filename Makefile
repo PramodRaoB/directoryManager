@@ -6,6 +6,7 @@
 
 # compiler options
 CC=gcc
+CLANG=clang
 
 # file paths
 file=main.c
@@ -14,9 +15,11 @@ output=main.out
 default:
 	$(CC) -o $(output) **/*.c *.c
 	./$(output)
-	clear
-	
-
+	rm $(output)
+clang:
+	$(CLANG) -o $(output) **/*.c *.c
+	./$(output)
+	rm $(output)
 
 compile:
 # 	@echo "Building code."

@@ -234,12 +234,20 @@ void dfsTree(TreeNode *curr, int numSpaces) {
     for (int i = 0; i < numSpaces; i++) printf(" ");
 
     //print current node
-    printf("|_____ %s\n", curr->file->name);
+    if (curr->file->is_file) {
+        blue();
+        printf("|__ %s\n", curr->file->name);
+        reset();
+    } else if (!(curr->file->is_file)) {
+        green();
+        printf("|__ %s\n", curr->file->name);
+        reset();
+    }
 
     //recurse on children
     TreeNode* temp = curr->first_child;
     while (temp) {
-        dfsTree(temp, numSpaces + 5);
+        dfsTree(temp, numSpaces + 2);
         temp = temp->next;
     }
 }
