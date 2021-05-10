@@ -2,6 +2,7 @@
 #define HASH_CHILD_H
 
 #include "NodeElement.h"
+#define TABLE_SIZE 109
 
 /*
  * Returns an "initialized" hashtable

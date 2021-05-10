@@ -4,7 +4,6 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-
 HashTable *initTable(int size) {
   // mallocs
   HashTable *ht = (HashTable *)malloc(sizeof(HashTable));
