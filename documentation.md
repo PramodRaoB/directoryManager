@@ -69,6 +69,43 @@ For clang users, use `make clang`
     └── utils.h
 ```
 
+# Contribution
+
+### Pramod Rao Budramane
+
+- Trie Implementation
+- Hashtable for child nodes, prime functions
+- Maintaining repository
+- Program Quality Testing
+
+### Soveet Kumar Nayak
+
+- Driver functions
+- Aliases, hashing for it, and rehashing
+- Teleport function, and traversal
+- Quality Control, Help function
+
+### Srikar Bhavesh Desu
+
+- String Parser
+- Aliases, Hashing
+- Finding in Alias table
+- Program testing and bug fixes
+
+### Tejah S.S.
+
+- Tree Structure
+- Move function, main functions
+- Improvement in functions, primary bug fixing, error fixtures
+- Comments and code readability, Makefile, Formatting, Code Maintenance, Named the repository
+
+### Varshita Kolipaka
+
+- Tree Structure, Improved Alias Function
+- Commented Code, Test code for bugs, Makefile, Made styling consistent
+- Frontend Interface and design, Code Documentation, README, cleaned
+- Code Maintenance
+
 # Data structures Used
 
 We have used a combination of Linked List trees, Hashtables, and tries to optimise the time complexity. 
@@ -333,40 +370,3 @@ Used in `ADD()`, `MOVE()`, `TELEPORT()`
 **RETURN VALUE:**  Pointer to the node pointed to by the path
 
 **TIME COMPLEXITY:**  $O(Path\ Length\  +\ levels\  in \ tree)$
-
-# Contribution
-
-### Pramod Rao Budramane
-
-- Trie Implementation
-- Hashtable for child nodes, prime functions
-- Maintaining repository
-- Program Quality Testing
-
-### Soveet Kumar Nayak
-
-- Driver functions
-- Aliases, hashing for it, and rehashing
-- Teleport function, and traversal
-- Quality Control, Help function
-
-### Srikar Bhavesh Desu
-
-- String Parser
-- Aliases, Hashing
-- Finding in Alias table
-- Program testing and bug fixes
-
-### Tejah S.S.
-
-- Tree Structure
-- Move function, main functions
-- Improvement in functions, primary bug fixing, error fixtures
-- Comments and code readability, Makefile, Formatting, Code Maintenance, Named the repository
-
-### Varshita Kolipaka
-
-- Tree Structure, Improved Alias Function
-- Commented Code, Test code for bugs, Makefile
-- Frontend Interface and design, Code documentation, readme, cleaned
-- Code Maintenance
