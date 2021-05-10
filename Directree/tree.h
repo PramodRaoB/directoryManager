@@ -66,4 +66,9 @@ void print_current_path(TreeNode *current);
  * */
 void delete_tree(TreeNode *root);
 
+/*
+ * Prints the tree from given node in an aesthetically pleasing way
+ * */
+void dfsTree(TreeNode *curr, int numSpaces);
+
 #endif

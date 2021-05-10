@@ -1,5 +1,6 @@
 #include "DirectoryManager.h"
 #include "include.h"
+#include <string.h>
 
 int main() {
   printf("\x1b[2J\x1b[1;1H");
@@ -30,6 +31,9 @@ int main() {
       continue;
     } else if (!strcasecmp(command, "find")) {
       FIND(current);
+      continue;
+    } else if (!strcmp(command, "tree")) {
+      TREE(current);
       continue;
     } else if (!strcasecmp(command, "ls")) {
       print_contents(current);

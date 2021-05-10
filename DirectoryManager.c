@@ -1,3 +1,5 @@
+#include "Directree/NodeElement.h"
+#include "Directree/tree.h"
 #include"include.h"
 void STARTUP() {
 
@@ -147,6 +149,10 @@ void FIND(TreeNode *currentDir) {
     free(prefixStr);
 }
 
+void TREE(TreeNode *current) {
+    dfsTree(current, 0);
+}
+
 void HELP() {
     printf("\nList of available commands and basic usage:\n\n");
 
@@ -200,6 +206,7 @@ void RIGHTARROW() {
 void QUIT(TreeNode *root, AliasTableStruct alias_table) {
     delete_tree(root);
     DeleteAliasTable(alias_table);
+    exit(0);
 }
 void DESIGN() {
     yellow();

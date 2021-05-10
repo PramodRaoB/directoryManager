@@ -35,7 +35,7 @@ AliasTableStruct ALIAS(AliasTableStruct table, TreeNode *root);
  * It scans for the alias and moves the root to the location
  * pointed by the alias
  * */
-TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root, TreeNode* current);
+TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root, TreeNode *current);
 
 /*
  * Takes the pointer to current directory
@@ -49,6 +49,12 @@ void FIND(TreeNode *currentDir);
  * Prints a help message containing a short description of the cli commands,
  * their usage and examples
  * */
+
+/*
+ * Prints the tree from the given node in an aesthetically pleasing way
+ * */
+void TREE(TreeNode *current);
+
 void HELP();
 
 /*

@@ -5,6 +5,7 @@
 // #include"../utils/colors.h"
 #include "../DirectoryManager.h"
 #include "../include.h"
+#include "NodeElement.h"
 #define ll long long int
 
 
@@ -226,4 +227,14 @@ void delete_tree(TreeNode *root) {
     free(root);
     root = NULL;
     return;
+}
+
+void dfsTree(TreeNode *curr, int numSpaces) {
+    for (int i = 0; i < numSpaces; i++) printf(" ");
+    printf("|_____ %s\n", curr->file->name);
+    TreeNode* temp = curr->first_child;
+    while (temp) {
+        dfsTree(temp, numSpaces + 5);
+        temp = temp->next;
+    }
 }
