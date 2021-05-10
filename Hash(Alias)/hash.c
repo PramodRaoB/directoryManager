@@ -126,7 +126,7 @@ char *FindAlias(char *alias, AliasTableStruct table) {
   INVALID
   */
   red();
-  printf("Error: No such alias exists\n");
+  printf("Error: No such alias exists\n\n");
   reset();
   return NULL;
 }

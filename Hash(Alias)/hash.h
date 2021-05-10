@@ -50,6 +50,7 @@ llu HornerHash(char arr[MAX_ALIAS_LENGTH], llu size);
 /*Finds the path for a given alias*/
 char *FindAlias(char *alias, AliasTableStruct table);
 
+/*Deletes the Hashtable*/
 void DeleteAliasTable(AliasTableStruct table);
 
 #endif

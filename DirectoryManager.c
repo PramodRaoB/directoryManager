@@ -1,6 +1,7 @@
 // #include "DirectoryManager.h"
 #include"include.h"
 void STARTUP() {
+    <<< <<< < HEAD
     blue();
     printf("\t\t     _____________________________________________________________\n");
     purple();
@@ -11,6 +12,16 @@ void STARTUP() {
     printf("\t\t      Enter 'quit' to terminate the program                      \n");
     printf("\t\t     _____________________________________________________________\n\n");
     reset();
+    == == == =
+        blue();
+    printf("______________________________________________________________\n");
+    printf("\t\tDirectory Management Program\n");
+    printf("Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
+    printf("Enter 'help' for a full list of commands and usage\n");
+    printf("Enter 'quit' to terminate the program\n");
+    printf("______________________________________________________________\n\n");
+    reset();
+    >>> >>> > 3cc3e7767df5dc8de3c007282690d3fcb3432ebf
 }
 
 void ADD(TreeNode *currentDir) {
