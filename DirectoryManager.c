@@ -4,7 +4,7 @@
 void STARTUP() {
   blue();
   printf("______________________________________________________________\n");
-  printf("\t\tDirectory management program\n");
+  printf("\t\tDirectory Management Program\n");
   printf("Major functions: 'add', 'move', 'alias', 'teleport', 'find'\n");
   printf("Enter 'help' for a full list of commands and usage\n");
   printf("Enter 'quit' to terminate the program\n");
