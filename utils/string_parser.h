@@ -7,6 +7,7 @@
 #include <string.h>
 
 char *read_string(void);
+char* rstrip(char *arr, int *len);
 
 int *parser_func(char *path);
 int len_of_parser_func(char *path);

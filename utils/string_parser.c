@@ -15,14 +15,6 @@ char *read_string(void) {
   arr = (char *)malloc(update * sizeof(char));
   // printf("Enter The Path: \n");
   while ((ch = getc(stdin)) != '\n') {
-    // ch = getc(stdin);
-    if (ch == ' ') {
-      red();
-      printf("Error: Path cannot contain spaces\n");
-      reset();
-      arr[0] = 0;
-      return arr;
-    }
     size++;
     if (size == update) {
       update *= 2;
@@ -38,11 +30,32 @@ char *read_string(void) {
     arr[len] = '\0';
     return arr;
   }
-  if (arr[len - 1] == '/')
-    arr[len - 1] = '\0';
-  else
-    arr[len] = '\0';
 
+  rstrip(arr, &len);
+  if(arr[0] == 0){
+    red();
+    printf("Error: Path cannot contain spaces\n");
+    reset();
+    return arr;
+  }
+
+  return arr;
+}
+
+char* rstrip(char *arr, int *len){
+  int i = (*len)-1;
+
+  while(arr[i] == ' ' || arr[i] == '/'){
+    i--;
+  }
+  arr[i+1] = 0;
+  *len = i+1;
+  for(i=0;i<(*len);i++){
+    if(arr[i] == ' '){
+      arr[0] = 0;
+      return arr;
+    }
+  }
   return arr;
 }
 
