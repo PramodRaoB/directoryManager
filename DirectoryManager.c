@@ -110,7 +110,7 @@ TreeNode *TELEPORT(AliasTableStruct table, TreeNode *root) {
   char alias[MAX_ALIAS_LENGTH];
   scanf("%s", alias);
   char *path = FindAlias(alias, table);
-
+  if (!path)return root;
   TreeNode *current;
 
   current = traversal(path, root);
