@@ -84,7 +84,7 @@ TreeNode *findInTable(HashTable *ht, char *nodeName) {
 
   while (ht->table[(searchHash + offset) % ht->tableSize] != NULL) {
     char *potential =
-        ht->table[(searchHash + offset) % ht->tableSize]->file->name;
+      ht->table[(searchHash + offset) % ht->tableSize]->file->name;
     if (strcmp(potential, nodeName) == 0) {
       return ht->table[(searchHash + offset) % ht->tableSize];
     }
