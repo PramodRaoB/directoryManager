@@ -1,6 +1,6 @@
 # [Directory Manager](https://github.com/PramodRaoB/directoryManager)
 
-A simple commandline sandbox directory manager which showcases hashing using the djb2 hash function, N-ary trees and tries for fast prefix matching
+A simple commandline sandbox directory manager which showcases several data-structure and algorithms such as hashing using the djb2 hash function, N-ary trees and tries for fast prefix matching.
 
 # Installation and Setup
 
