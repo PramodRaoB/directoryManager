@@ -1,6 +1,6 @@
 # [Directory Manager](https://github.com/PramodRaoB/directoryManager)
 
-## Repo for the DSA Mini-project Directory Manager
+A simple commandline sandbox directory manager which showcases hashing using the djb2 hash function, N-ary trees and tries for fast prefix matching
 
 # Installation and Setup
 
